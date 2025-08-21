@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+:root {
+    --bg-color: hsl(0, 0%, 14%);
+    --secondary-bg-color: hsl(0, 0%, 27%);
+    --text-color: hsl(0, 0%, 100%);
+    --highlight-color: var(--color-purple-700);
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+    color-scheme: light dark;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.btn {
+    border-radius: 8px;
+    padding: .3em .6em;
+    cursor: pointer;
+}
+
+.navbar-nav .btn-link {
+    transition: background ease 200ms;
+}
+
+.navbar-nav .btn-link.active,
+.navbar-nav .btn-link:hover {
+    background: var(--secondary-bg-color);
+    transition: background ease 200ms;
+}
+
+.btn-outline {
+    border: 1px solid var(--text-color);
+    transition: all ease 200ms;
+}
+
+.btn-outline:hover {
+    border-color: var(--highlight-color);
+    background: var(--highlight-color);
+    transition: all ease 200ms;
+}
