@@ -1,10 +1,13 @@
 @import "tailwindcss";
 
-:root {
+@theme {
     --bg-color: hsl(0, 0%, 14%);
     --secondary-bg-color: hsl(0, 0%, 27%);
     --text-color: hsl(0, 0%, 100%);
-    --highlight-color: var(--color-purple-700);
+    --highlight-color: var(--color-amber-300);
+}
+
+:root {
     font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 
     color-scheme: light dark;
@@ -19,27 +22,18 @@
 
 .btn {
     border-radius: 8px;
-    padding: .3em .6em;
+    padding: 0.3em 0.6em;
     cursor: pointer;
 }
 
-.navbar-nav .btn-link {
-    transition: background ease 200ms;
-}
-
-.navbar-nav .btn-link.active,
-.navbar-nav .btn-link:hover {
-    background: var(--secondary-bg-color);
-    transition: background ease 200ms;
-}
-
 .btn-outline {
-    border: 1px solid var(--text-color);
+    border: 1px solid var(--highlight-color);
+    color: var(--highlight-color);
     transition: all ease 200ms;
 }
 
 .btn-outline:hover {
-    border-color: var(--highlight-color);
     background: var(--highlight-color);
+    color: #00000090;
     transition: all ease 200ms;
 }
