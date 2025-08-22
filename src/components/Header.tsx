@@ -3,7 +3,11 @@ import { MoonFill, XLg, List } from "react-bootstrap-icons";
 import { useState } from "react";
 import "./../css/header.css";
 
-function Header() {
+type HeaderProps = {
+    curpage: string;
+}
+
+function Header({curpage}:HeaderProps) {
     const [isNavSupportedShown, setIsNavSupportedShown] = useState(false);
 
     const showNavbarSupported = () => {
@@ -16,17 +20,18 @@ function Header() {
 
     return (
         <>
-            <header className="grid grid-cols-12 shadow-lg">
+        
+            <div
+                onClick={hideNavbarSupported}
+                className={`dimmer absolute bg-black opacity-70 top-0 right-0 bottom-0 left-0 md:hidden ${
+                    isNavSupportedShown ? "" : "hidden"
+                }`}
+            ></div>
+            <header className="grid grid-cols-12 shadow-lg sticky top-0">
                 <nav className="grid grid-cols-12 col-span-12 col-start-1 md:col-span-10 md:col-start-2 align-center">
-                    <div className="navbar-brand col-span-3 md:col-span-2 py-4">
+                    <div className="navbar-brand col-span-3 md:col-span-2 py-2">
                         <img src={logo} alt="Logo PetUp" className="w-full" />
                     </div>
-                    <div
-                        onClick={hideNavbarSupported}
-                        className={`dimmer absolute bg-black opacity-70 top-0 right-0 bottom-0 left-0 ${
-                            isNavSupportedShown ? "" : "hidden"
-                        }`}
-                    ></div>
                     <div className="navbar-nav flex justify-end items-center col-span-9 md:col-span-10 gap-2">
                         <button className="h-fit w-fit p-2 hover:text-(--highlight-color) transition-colors cursor-pointer duration-300">
                             <MoonFill className="h-4 w-4" />
@@ -58,27 +63,27 @@ function Header() {
                                 </button>
                             </li>
                             <li>
-                                <button className="btn btn-link active">
+                                <button className={`btn btn-link ${curpage == 'home'? 'active' : ''}`}>
                                     <p className="text-sm">Início</p>
                                 </button>
                             </li>
                             <li>
-                                <button className="btn btn-link">
+                                <button className={`btn btn-link ${curpage == 'pets'? 'active' : ''}`}>
                                     <p className="text-sm">Pets</p>
                                 </button>
                             </li>
                             <li>
-                                <button className="btn btn-link">
+                                <button className={`btn btn-link ${curpage == 'ongs'? 'active' : ''}`}>
                                     <p className="text-sm">ONGs</p>
                                 </button>
                             </li>
                             <li>
-                                <button className="btn btn-link">
+                                <button className={`btn btn-link ${curpage == 'doar'? 'active' : ''}`}>
                                     <p className="text-sm">Doar Pet</p>
                                 </button>
                             </li>
                             <li>
-                                <button className="btn btn-link">
+                                <button className={`btn btn-link ${curpage == 'perfil'? 'active' : ''}`}>
                                     <p className="text-sm">Meu Perfil</p>
                                 </button>
                             </li>
