@@ -5,9 +5,9 @@ import "./../css/header.css";
 
 type HeaderProps = {
     curpage: string;
-}
+};
 
-function Header({curpage}:HeaderProps) {
+function Header({ curpage }: HeaderProps) {
     const [isNavSupportedShown, setIsNavSupportedShown] = useState(false);
 
     const showNavbarSupported = () => {
@@ -20,13 +20,6 @@ function Header({curpage}:HeaderProps) {
 
     return (
         <>
-        
-            <div
-                onClick={hideNavbarSupported}
-                className={`dimmer fixed z-50 opacity-70 top-0 right-0 bottom-0 left-0 md:hidden ${
-                    isNavSupportedShown ? "" : "hidden"
-                }`}
-            ></div>
             <header className="grid grid-cols-12 shadow-lg sticky top-0 z-30">
                 <nav className="grid grid-cols-12 col-span-12 col-start-1 md:col-span-10 md:col-start-2 align-center">
                     <div className="navbar-brand col-span-3 md:col-span-2 py-2">
@@ -43,8 +36,15 @@ function Header({curpage}:HeaderProps) {
                         >
                             <List className="h-7 w-7" />
                         </button>
+
+                        <div
+                            onClick={hideNavbarSupported}
+                            className={`dimmer fixed bg-black z-50 opacity-70 top-0 right-0 bottom-0 left-0 md:hidden ${
+                                isNavSupportedShown ? "" : "hidden"
+                            }`}
+                        ></div>
                         <ul
-                            className={`navbar-supported flex flex-col z-50 px-24 py-10 gap-2 items-center fixed top-0 left-0 h-full duration-400 transition-all border border-(--highlight-color) md:border-none md:translate-0 md:flex-row md:static md:p-0
+                            className={`navbar-supported flex flex-col z-60 px-24 py-10 gap-2 items-center fixed top-0 left-0 h-full duration-400 transition-all border border-(--highlight-color) md:border-none md:translate-0 md:flex-row md:static md:p-0
                                 ${
                                     isNavSupportedShown
                                         ? "translate-x-0"
@@ -63,27 +63,47 @@ function Header({curpage}:HeaderProps) {
                                 </button>
                             </li>
                             <li>
-                                <button className={`btn btn-link ${curpage == 'home'? 'active' : ''}`}>
+                                <button
+                                    className={`btn btn-link ${
+                                        curpage == "home" ? "active" : ""
+                                    }`}
+                                >
                                     <p className="text-sm">Início</p>
                                 </button>
                             </li>
                             <li>
-                                <button className={`btn btn-link ${curpage == 'pets'? 'active' : ''}`}>
+                                <button
+                                    className={`btn btn-link ${
+                                        curpage == "pets" ? "active" : ""
+                                    }`}
+                                >
                                     <p className="text-sm">Pets</p>
                                 </button>
                             </li>
                             <li>
-                                <button className={`btn btn-link ${curpage == 'ongs'? 'active' : ''}`}>
+                                <button
+                                    className={`btn btn-link ${
+                                        curpage == "ongs" ? "active" : ""
+                                    }`}
+                                >
                                     <p className="text-sm">ONGs</p>
                                 </button>
                             </li>
                             <li>
-                                <button className={`btn btn-link ${curpage == 'doar'? 'active' : ''}`}>
+                                <button
+                                    className={`btn btn-link ${
+                                        curpage == "doar" ? "active" : ""
+                                    }`}
+                                >
                                     <p className="text-sm">Doar Pet</p>
                                 </button>
                             </li>
                             <li>
-                                <button className={`btn btn-link ${curpage == 'perfil'? 'active' : ''}`}>
+                                <button
+                                    className={`btn btn-link ${
+                                        curpage == "perfil" ? "active" : ""
+                                    }`}
+                                >
                                     <p className="text-sm">Meu Perfil</p>
                                 </button>
                             </li>
