@@ -23,11 +23,11 @@ function Header({curpage}:HeaderProps) {
         
             <div
                 onClick={hideNavbarSupported}
-                className={`dimmer absolute bg-black opacity-70 top-0 right-0 bottom-0 left-0 md:hidden ${
+                className={`dimmer fixed z-50 opacity-70 top-0 right-0 bottom-0 left-0 md:hidden ${
                     isNavSupportedShown ? "" : "hidden"
                 }`}
             ></div>
-            <header className="grid grid-cols-12 shadow-lg sticky top-0">
+            <header className="grid grid-cols-12 shadow-lg sticky top-0 z-30">
                 <nav className="grid grid-cols-12 col-span-12 col-start-1 md:col-span-10 md:col-start-2 align-center">
                     <div className="navbar-brand col-span-3 md:col-span-2 py-2">
                         <img src={logo} alt="Logo PetUp" className="w-full" />
@@ -44,7 +44,7 @@ function Header({curpage}:HeaderProps) {
                             <List className="h-7 w-7" />
                         </button>
                         <ul
-                            className={`navbar-supported flex flex-col z-2 px-24 py-10 gap-2 items-center fixed top-0 left-0 h-full duration-400 transition-all border border-(--highlight-color) md:border-none md:translate-0 md:flex-row md:static md:p-0
+                            className={`navbar-supported flex flex-col z-50 px-24 py-10 gap-2 items-center fixed top-0 left-0 h-full duration-400 transition-all border border-(--highlight-color) md:border-none md:translate-0 md:flex-row md:static md:p-0
                                 ${
                                     isNavSupportedShown
                                         ? "translate-x-0"
