@@ -20,7 +20,7 @@ function Header({ curpage }: HeaderProps) {
 
     return (
         <>
-            <header className="grid grid-cols-12 shadow-lg sticky top-0 z-30">
+            <header className="bg-(--bg-color) grid grid-cols-12 shadow-lg sticky top-0 z-30">
                 <nav className="grid grid-cols-12 col-span-12 col-start-1 md:col-span-10 md:col-start-2 align-center">
                     <div className="navbar-brand col-span-3 md:col-span-2 py-2">
                         <img src={logo} alt="Logo PetUp" className="w-full" />

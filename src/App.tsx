@@ -5,8 +5,9 @@ function App() {
     return (
         <>
             <Header curpage={"home"} />
-            <main className="md:col-span-10 md:col-start-2">
+            <main>
                 <Carousel />
+                <div className="md:col-span-10 md:col-start-2"></div>
             </main>
         </>
     );
