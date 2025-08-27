@@ -6,10 +6,6 @@
 
 .navbar-nav .btn-link.active,
 .navbar-nav .btn-link:hover {
-    background: var(--secondary-bg-color);
+    background: var(--secondary-bg);
     transition: background ease 200ms;
-}
-
-.navbar-supported {
-    background: var(--bg-color);
 }
