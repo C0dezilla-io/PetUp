@@ -19,15 +19,6 @@ footer button:hover {
     transform: translateY(-1px);
 }
 
-footer .bg-gray-700:hover {
-    background-color: var(--highlight-color);
-    transform: scale(1.05);
-}
-
-footer .text-gray-300:hover {
-    color: var(--highlight-color);
-}
-
 @media (max-width: 768px) {
     footer .grid-cols-1 {
         gap: 2rem;
