@@ -60,13 +60,13 @@ function Carousel() {
                     </div>
 
                     <button
-                        className="blaze-prev absolute left-2 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-black/40 hover:bg-black/60 text-white"
+                        className="blaze-prev absolute cursor-pointer left-2 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-black/40 hover:bg-black/60 text-white"
                         aria-label="Anterior"
                     >
                         <ChevronLeft className="h-6 w-6" />
                     </button>
                     <button
-                        className="blaze-next absolute right-2 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-black/40 hover:bg-black/60 text-white"
+                        className="blaze-next absolute cursor-pointer right-2 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-black/40 hover:bg-black/60 text-white"
                         aria-label="Próximo"
                     >
                         <ChevronRight className="h-6 w-6" />

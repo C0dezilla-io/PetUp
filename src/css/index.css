@@ -1,23 +1,31 @@
 @import "tailwindcss";
 
-@theme {
-    --bg-color: hsl(0, 0%, 14%);
-    --secondary-bg-color: hsl(0, 0%, 27%);
-    --text-color: hsl(0, 0%, 100%);
-    --highlight-color: var(--color-amber-300);
-}
-
-:root {
+#root {
     font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 
     color-scheme: light dark;
-    color: var(--text-color);
-    background-color: var(--bg-color);
+    background-color: var(--bg);
+    color: var(--text);
 
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    
+    --bg: hsl(0, 0%, 95%);
+    --secondary-bg: hsl(0, 0%, 80%);
+    --text: hsl(0, 0%, 0%);
+
+
+    --highlight: var(--color-amber-400);
+
+
+    &.dark {
+        --bg: hsl(0, 0%, 10%);
+        --secondary-bg: hsl(0, 0%, 20%);
+        --text: hsl(0, 0%, 100%);
+    }
 }
 
 .btn {
@@ -27,13 +35,13 @@
 }
 
 .btn-outline {
-    border: 1px solid var(--highlight-color);
-    color: var(--highlight-color);
+    border: 1px solid var(--highlight);
+    color: var(--highlight);
     transition: all ease 200ms;
 }
 
 .btn-outline:hover {
-    background: var(--highlight-color);
+    background: var(--highlight);
     color: #00000090;
     transition: all ease 200ms;
 }
