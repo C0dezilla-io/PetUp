@@ -1,15 +1,13 @@
-import Header from "./components/Header"
-import Carousel from "./components/Carousel"
+import { Layout } from "./components/shared/layout";
+import Carousel from "./components/Carousel";
 
 function App() {
     return (
-        <>
-            <Header curpage={"home"} />
-            <main>
+        <Layout>
+            <div className="md:col-span-10 md:col-start-2">
                 <Carousel />
-                <div className="md:col-span-10 md:col-start-2"></div>
-            </main>
-        </>
+            </div>
+        </Layout>
     );
 }
 
