@@ -19,6 +19,10 @@ footer button:hover {
     transform: translateY(-1px);
 }
 
+.footerDropdownBtn:hover {
+    transform: none;
+}
+
 .footerDrop {
     position: relative;
 }
@@ -34,6 +38,7 @@ footer button:hover {
     transition: width ease 300ms;
 }
 
+.footerDropdownBtn:hover .footerDrop::after,
 .footerDropActive::after {
     width: 80vw;
     transition: width ease 300ms;
@@ -43,7 +48,7 @@ footer button:hover {
     footer .grid-cols-1 {
         gap: 2rem;
     }
-    
+
     footer .py-12 {
         padding-top: 2rem;
         padding-bottom: 2rem;
