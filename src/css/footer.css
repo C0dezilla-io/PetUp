@@ -19,6 +19,26 @@ footer button:hover {
     transform: translateY(-1px);
 }
 
+.footerDrop {
+    position: relative;
+}
+
+.footerDrop::after {
+    content: "";
+    position: absolute;
+    top: 110%;
+    left: 0;
+    width: 0;
+    height: 1px;
+    border-bottom: 1px solid var(--text);
+    transition: width ease 300ms;
+}
+
+.footerDropActive::after {
+    width: 80vw;
+    transition: width ease 300ms;
+}
+
 @media (max-width: 768px) {
     footer .grid-cols-1 {
         gap: 2rem;
