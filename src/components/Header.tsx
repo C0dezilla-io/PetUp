@@ -34,10 +34,10 @@ function Header({ curpage }: HeaderProps) {
     return (
         <header className="bg-[var(--bg)] grid grid-cols-12 shadow-lg sticky top-0 z-30">
             <nav className="grid grid-cols-12 col-span-12 col-start-1 md:col-span-10 md:col-start-2 align-center">
-                <a href="#" className="navbar-brand col-span-3 md:col-span-2 py-2">
+                <a href="#" className="navbar-brand col-span-2 md:col-span-1 m-1.5 sm:m-2 md:m-0 md:my-3">
                     <img src={logo} alt="Logo PetUp" className="w-full" />
                 </a>
-                <div className="navbar-nav flex justify-end items-center col-span-9 md:col-span-10 gap-2">
+                <div className="navbar-nav flex justify-end items-center col-span-10 md:col-span-11 gap-2">
                     <button onClick={toggleDark} className="h-fit w-fit p-2 hover:text-[var(--highlight)] transition-colors cursor-pointer duration-300">
                         {isOnDarkMode ? <MoonStarsFill className="h-4 w-4" /> : <SunFill className="h-4 w-4" />}
 
