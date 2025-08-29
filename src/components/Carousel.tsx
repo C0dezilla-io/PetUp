@@ -39,13 +39,16 @@ function Carousel() {
     const slides = [slide1, slide2, slide3, slide4];
 
     return (
-        <section className="mt-4 flex justify-center">
-            <div
-                className="blaze-slider max-w-4xl mx-auto relative"
-                ref={sliderRef}
-            >
-                <div className="blaze-container">
-                    <div className="blaze-track-container">
+        <section className="flex justify-center">
+            <div className="blaze-slider mx-auto relative" ref={sliderRef}>
+                <div className="blaze-container grid grid-cols-9">
+                    <button
+                        className="blaze-prev hidden md:flex justify-center items-center bg-black/40 hover:bg-black/60 text-white"
+                        aria-label="Anterior"
+                    >
+                        <ChevronLeft className="h-6 w-6" />
+                    </button>
+                    <div className="blaze-track-container col-span-9 md:col-span-7">
                         <div className="blaze-track">
                             {slides.map((src, index) => (
                                 <div className="blaze-slide" key={index}>
@@ -58,15 +61,8 @@ function Carousel() {
                             ))}
                         </div>
                     </div>
-
                     <button
-                        className="blaze-prev absolute cursor-pointer left-2 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-black/40 hover:bg-black/60 text-white"
-                        aria-label="Anterior"
-                    >
-                        <ChevronLeft className="h-6 w-6" />
-                    </button>
-                    <button
-                        className="blaze-next absolute cursor-pointer right-2 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-black/40 hover:bg-black/60 text-white"
+                        className="blaze-next hidden md:flex justify-center items-center bg-black/40 hover:bg-black/60 text-white"
                         aria-label="Próximo"
                     >
                         <ChevronRight className="h-6 w-6" />
