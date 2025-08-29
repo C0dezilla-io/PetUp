@@ -43,7 +43,7 @@ function Carousel() {
             <div className="blaze-slider mx-auto relative" ref={sliderRef}>
                 <div className="blaze-container grid grid-cols-9">
                     <button
-                        className="blaze-prev hidden md:flex justify-center items-center bg-black/40 hover:bg-black/60 text-white"
+                        className="blaze-prev hidden md:flex justify-center items-center bg-[var(--secondary-bg)]/50 hover:bg-[var(--secondary-bg)] text-[var(--text)]"
                         aria-label="Anterior"
                     >
                         <ChevronLeft className="h-6 w-6" />
@@ -55,14 +55,14 @@ function Carousel() {
                                     <img
                                         src={src}
                                         alt={`Slide ${index + 1}`}
-                                        className="w-full h-auto rounded-lg shadow-lg"
+                                        className="w-full h-auto shadow-lg"
                                     />
                                 </div>
                             ))}
                         </div>
                     </div>
                     <button
-                        className="blaze-next hidden md:flex justify-center items-center bg-black/40 hover:bg-black/60 text-white"
+                        className="blaze-next hidden md:flex justify-center items-center bg-[var(--secondary-bg)]/50 hover:bg-[var(--secondary-bg)] text-[var(--text)]"
                         aria-label="Próximo"
                     >
                         <ChevronRight className="h-6 w-6" />
