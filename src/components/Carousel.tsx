@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import BlazeSlider from "blaze-slider";
 import "blaze-slider/dist/blaze.css";
+import "../css/carousel.css";
 import { ChevronLeft, ChevronRight } from "react-bootstrap-icons";
 
 import slide1 from "../assets/logo/slide1.png";
@@ -67,6 +68,11 @@ function Carousel() {
                     >
                         <ChevronRight className="h-6 w-6" />
                     </button>
+                    <div className="controls col-span-9">
+                        <div className="bottom-nav">
+                            <div className="blaze-pagination flex justify-center items-center gap-4 mt-3"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
