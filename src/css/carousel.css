@@ -1,0 +1,31 @@
+:root {
+    --pagination-btn-size: 10px;
+    --pagination-btn-active-size: 13px;
+}
+
+.blaze-pagination {
+    height: var(--pagination-btn-active-size);
+}
+
+.blaze-pagination button {
+    color: transparent;
+    background: var(--secondary-bg);
+    width: var(--pagination-btn-size);
+    height: var(--pagination-btn-size);
+    border-radius: 50%;
+    transition: all ease 200ms;
+}
+
+.blaze-pagination button.active {
+    width: var(--pagination-btn-active-size);
+    height: var(--pagination-btn-active-size);
+    background: var(--text);
+    transition: all ease 200ms;
+}
+
+@media (max-width: 767px) {
+    :root {
+        --pagination-btn-size: 6px;
+        --pagination-btn-active-size: 9px;
+    }
+}
