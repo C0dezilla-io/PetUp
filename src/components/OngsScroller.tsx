@@ -27,14 +27,14 @@ function OngsScroller() {
             <ul className="ongsScrollerList flex flex-nowrap gap-2 pt-10 pb-10 w-max">
                 {images.map((i, index) => (
                     <li key={index}>
-                        <a href="https://github.com/C0dezilla-io" className="w-[calc(100vw / 6)] flex flex-shrink-0 justify-center items-center rounded-[5px] bg-[hsl(210,44%,96%)] shadow-md shadow-(color: var(--secondary-bg))">
+                        <a href="https://github.com/C0dezilla-io" className="w-36 sm:w-52 flex justify-center items-center rounded-[5px] bg-[hsl(210,44%,96%)] shadow-md shadow-(color: var(--secondary-bg))">
                             <img src={i} alt="Ong parceira" className="w-3/4" />
                         </a>
                     </li>
                 ))}
                 {images.map((i, index) => (
                     <li key={index}>
-                        <a href="https://github.com/C0dezilla-io" className="w-[calc(100vw / 6)] flex flex-shrink-0 justify-center items-center rounded-[5px] bg-[hsl(210,44%,96%)] shadow-md shadow-(color: var(--secondary-bg))">
+                        <a href="https://github.com/C0dezilla-io" className="w-36 sm:w-52 flex flex-shrink-0 justify-center items-center rounded-[5px] bg-[hsl(210,44%,96%)] shadow-md shadow-(color: var(--secondary-bg))">
                             <img src={i} alt="Ong parceira" className="w-3/4" />
                         </a>
                     </li>
