@@ -12,6 +12,10 @@
     animation: scroll linear infinite 30s;
 }
 
+.ongsScroller .ongsScrollerList:has(li:hover) {
+    animation-play-state: paused;
+}
+
 .ongsScroller .ongsScrollerList img {
     user-select: none;
     -webkit-user-drag: none;
