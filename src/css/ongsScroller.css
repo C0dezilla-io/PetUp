@@ -21,6 +21,10 @@
     -webkit-user-drag: none;
 }
 
+.ongsScroller .ongsScrollerList li {
+    box-shadow: 0 7px 5px var(--secondary-bg)
+}
+
 @keyframes scroll {
     to {
         transform: translate(calc(-50% - 0.25rem));
