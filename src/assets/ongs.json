@@ -1,0 +1,32 @@
+[
+    {
+        "nome": "ABAN - Associação dos amigos",
+        "imagem": "aban.png",
+        "site": "https://www.aban.org.br/"
+    },
+    {
+        "nome": "Bastadotar",
+        "imagem": "bastadotar.png",
+        "site": "https://www.bastadotar.org/"
+    },
+    {
+        "nome": "Confraria",
+        "imagem": "confraria.png",
+        "site": "https://www.miadoselatidos.org.br/"
+    },
+    {
+        "nome": "Focinhos de Luz",
+        "imagem": "focinhosdeluz.png",
+        "site": "https://www.focinhosdeluz.com/"
+    },
+    {
+        "nome": "Instituto Eu Sou o Bicho",
+        "imagem": "eusouobicho.png",
+        "site": "https://institutoeusouobicho.org.br/"
+    },
+    {
+        "nome": "Protetores Voluntários de Camboriú",
+        "imagem": "protetoresvoluntarios.png",
+        "site": "https://www.instagram.com/protetores_camboriu/"
+    }
+]
