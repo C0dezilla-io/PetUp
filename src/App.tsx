@@ -1,16 +1,19 @@
 import { Layout } from "./components/shared/layout";
-import Carousel from "./components/Carousel";
-import OngsScroller from './components/OngsScroller';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./components/pages/Home.tsx";
+import Login from "./components/pages/Login.tsx";
 
 function App() {
-    return (
-        <Layout>
-            <div className="md:col-span-10 md:col-start-2">
-                <Carousel />
-                <OngsScroller />
-            </div>
-        </Layout>
-    );
+  return (
+    <BrowserRouter>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </Layout>
+    </BrowserRouter>
+  );
 }
 
 export default App;
