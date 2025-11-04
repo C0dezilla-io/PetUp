@@ -1,18 +1,17 @@
 import logo from "./../assets/logo/logo-side-green.png";
 import { MoonStarsFill, SunFill, XLg, List } from "react-bootstrap-icons";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./../css/header.css";
 
-type HeaderProps = {
-  curpage: string;
-};
 
-function Header({ curpage }: HeaderProps) {
+function Header() {
   const [isNavSupportedShown, setIsNavSupportedShown] = useState(false);
   const [isOnDarkMode, setIsOnDarkMode] = useState(true);
 
+
   const navigate = useNavigate();
+  const [curpage, setCurpage] = useState(useLocation().pathname);
 
   const showNavbarSupported = () => {
     setIsNavSupportedShown(true);
@@ -23,7 +22,7 @@ function Header({ curpage }: HeaderProps) {
   };
 
   const toggleDark = () => {
-    let root: HTMLElement = document.querySelector("#root")!;
+    const root: HTMLElement = document.querySelector("#root")!;
 
     if (isOnDarkMode) {
       root.classList.remove("dark");
@@ -33,6 +32,12 @@ function Header({ curpage }: HeaderProps) {
       setIsOnDarkMode(true);
     }
   };
+
+  const handleRedirect = (path: string) => {
+    navigate(path);
+    setCurpage(path);
+    setIsNavSupportedShown(false);
+  }
 
   return (
     <header className="bg-[var(--bg)] grid grid-cols-12 shadow-lg sticky top-0 z-30">
@@ -70,11 +75,11 @@ function Header({ curpage }: HeaderProps) {
           ></div>
           <ul
             className={`navbar-supported bg-[var(--bg)] flex flex-col z-60 px-24 py-10 gap-2 items-center fixed top-0 left-0 h-full duration-400 transition-transform border border-[var(--highlight)] md:border-none md:translate-0 md:flex-row md:static md:p-0
-                                ${
-                                  isNavSupportedShown
-                                    ? "translate-x-0"
-                                    : "translate-x-[-100%]"
-                                }`}
+              ${
+                isNavSupportedShown
+                  ? "translate-x-0"
+                  : "translate-x-[-100%]"
+              }`}
           >
             <li className={!isNavSupportedShown ? "hidden" : ""}>
               <button
@@ -87,37 +92,41 @@ function Header({ curpage }: HeaderProps) {
             </li>
             <li>
               <button
-                onClick={() => navigate("/")}
-                className={`btn btn-link ${curpage == "home" ? "active" : ""}`}
+                onClick={() => handleRedirect("/")}
+                className={`btn btn-link ${curpage == "/" ? "active" : ""}`}
               >
                 <p className="text-sm">Início</p>
               </button>
             </li>
             <li>
               <button
-                className={`btn btn-link ${curpage == "pets" ? "active" : ""}`}
+              onClick={() => handleRedirect("/pets/")}
+                className={`btn btn-link ${curpage == "/pets/" ? "active" : ""}`}
               >
                 <p className="text-sm">Pets</p>
               </button>
             </li>
             <li>
               <button
-                className={`btn btn-link ${curpage == "ongs" ? "active" : ""}`}
+                onClick={() => handleRedirect("/ongs/")}
+                className={`btn btn-link ${curpage == "/ongs/" ? "active" : ""}`}
               >
                 <p className="text-sm">ONGs</p>
               </button>
             </li>
             <li>
               <button
-                className={`btn btn-link ${curpage == "doar" ? "active" : ""}`}
+                onClick={() => handleRedirect("/doar/")}
+                className={`btn btn-link ${curpage == "/doar/" ? "active" : ""}`}
               >
                 <p className="text-sm">Doar Pet</p>
               </button>
             </li>
             <li>
               <button
+                onClick={() => handleRedirect("/perfil/")}
                 className={`btn btn-link ${
-                  curpage == "perfil" ? "active" : ""
+                  curpage == "/perfil/" ? "active" : ""
                 }`}
               >
                 <p className="text-sm">Meu Perfil</p>
@@ -125,7 +134,7 @@ function Header({ curpage }: HeaderProps) {
             </li>
             <li>
               <button
-                onClick={() => navigate("/login")}
+                onClick={() => handleRedirect("/login")}
                 className="btn btn-outline"
               >
                 <p className="text-sm">Entrar</p>

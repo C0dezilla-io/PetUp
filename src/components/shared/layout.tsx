@@ -9,7 +9,7 @@ interface LayoutProps {
 export const Layout = ({ children }: LayoutProps) => {
   return (
     <>
-      <Header curpage="home" />
+      <Header />
       <main className="min-h-screen">{children}</main>
       <Footer />
     </>
