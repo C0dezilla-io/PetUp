@@ -1,6 +1,6 @@
-import React from 'react';
-import Header from '../Header';
-import { Footer } from '../footer';
+import React from "react";
+import Header from "../Header";
+import { Footer } from "../footer";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -9,7 +9,7 @@ interface LayoutProps {
 export const Layout = ({ children }: LayoutProps) => {
   return (
     <>
-      <Header curpage="home" />
+      <Header />
       <main className="min-h-screen">{children}</main>
       <Footer />
     </>
