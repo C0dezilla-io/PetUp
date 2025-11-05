@@ -4,8 +4,9 @@ import Home from "./components/pages/Home.tsx";
 import Login from "./components/pages/Login.tsx";
 import Pets from "./components/pages/Pets.tsx";
 import DoarPets from "./components/pages/DoarPets.tsx";
-import Perfil from "./components/pages/Perfil.tsx"
-import Ongs from "./components/pages/Ongs.tsx"
+import Perfil from "./components/pages/Perfil.tsx";
+import Ongs from "./components/pages/Ongs.tsx";
+import NotFound from "./components/pages/NotFound.tsx";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/ongs/" element={<Ongs />} />
           <Route path="/doar/" element={<DoarPets />} />
           <Route path="/perfil/" element={<Perfil />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
     </BrowserRouter>
