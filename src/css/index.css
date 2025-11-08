@@ -15,7 +15,8 @@
   --bg: hsl(0, 0%, 100%);
   --secondary-bg: hsl(0, 0%, 90%);
   --text: hsl(0, 0%, 0%);
-  --secondary-text: hsl(0, 0%, 15%);
+  --secondary-text: hsl(0, 0%, 20%);
+  --tertiary-text: hsl(0, 0%, 30%);
 
   --highlight: var(--color-amber-400);
 
@@ -23,7 +24,8 @@
     --bg: hsl(0, 0%, 10%);
     --secondary-bg: hsl(0, 0%, 20%);
     --text: hsl(0, 0%, 100%);
-    --secondary-text: hsl(0, 0%, 85%);
+    --secondary-text: hsl(0, 0%, 80%);
+    --tertiary-text: hsl(0, 0%, 70%);
   }
 }
 
