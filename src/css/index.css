@@ -1,47 +1,48 @@
 @import "tailwindcss";
 
 #root {
-    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 
-    color-scheme: light dark;
-    background-color: var(--bg);
-    color: var(--text);
+  color-scheme: light dark;
+  background-color: var(--bg);
+  color: var(--text);
 
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
-    
-    --bg: hsl(0, 0%, 100%);
-    --secondary-bg: hsl(0, 0%, 90%);
-    --text: hsl(0, 0%, 0%);
+  --bg: hsl(0, 0%, 100%);
+  --secondary-bg: hsl(0, 0%, 90%);
+  --text: hsl(0, 0%, 0%);
+  --secondary-text: hsl(0, 0%, 20%);
+  --tertiary-text: hsl(0, 0%, 30%);
 
+  --highlight: var(--color-amber-400);
 
-    --highlight: var(--color-amber-400);
-
-
-    &.dark {
-        --bg: hsl(0, 0%, 10%);
-        --secondary-bg: hsl(0, 0%, 20%);
-        --text: hsl(0, 0%, 100%);
-    }
+  &.dark {
+    --bg: hsl(0, 0%, 10%);
+    --secondary-bg: hsl(0, 0%, 20%);
+    --text: hsl(0, 0%, 100%);
+    --secondary-text: hsl(0, 0%, 80%);
+    --tertiary-text: hsl(0, 0%, 70%);
+  }
 }
 
 .btn {
-    border-radius: 8px;
-    padding: 0.3em 0.6em;
-    cursor: pointer;
+  border-radius: 8px;
+  padding: 0.3em 0.6em;
+  cursor: pointer;
 }
 
 .btn-outline {
-    border: 1px solid var(--highlight);
-    color: var(--highlight);
-    transition: all ease 200ms;
+  border: 1px solid var(--highlight);
+  color: var(--highlight);
+  transition: all ease 200ms;
 }
 
 .btn-outline:hover {
-    background: var(--highlight);
-    color: #00000090;
-    transition: all ease 200ms;
+  background: var(--highlight);
+  color: #00000090;
+  transition: all ease 200ms;
 }
