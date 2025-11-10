@@ -3,14 +3,27 @@ import { Link } from 'react-router-dom';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 import logo from "../../assets/logo/logo-side-green.png";
 
-export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+export default function Cadastro() {
+  const [formData, setFormData] = useState({
+    nome: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Email:', email);
-    console.log('Password:', password);
+    console.log('Dados do cadastro:', formData);
   };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-[var(--bg)] py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8 bg-[var(--secondary-bg)] p-10 rounded-xl shadow-lg">
@@ -23,20 +36,36 @@ export default function Login() {
             />
           </div>
           <h2 className="mt-6 text-3xl font-extrabold text-[var(--text)]">
-            Entre na sua conta
+            Crie sua conta
           </h2>
           <p className="mt-2 text-sm text-[var(--text)] opacity-70">
             Ou{' '}
             <Link
-              to="/cadastro"
+              to="/login"
               className="font-medium text-[var(--highlight)] hover:opacity-80 transition-opacity duration-200"
             >
-              crie uma nova conta
+              entre na sua conta existente
             </Link>
           </p>
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="space-y-4">
+            <div>
+              <label htmlFor="nome" className="sr-only">
+                Nome completo
+              </label>
+              <input
+                id="nome"
+                name="nome"
+                type="text"
+                autoComplete="name"
+                required
+                className="relative block w-full px-3 py-3 border border-[var(--border)] placeholder-[var(--text)] opacity-70 text-[var(--text)] bg-[var(--bg)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--highlight)] focus:border-transparent transition-all duration-200"
+                placeholder="Nome completo"
+                value={formData.nome}
+                onChange={handleChange}
+              />
+            </div>
             <div>
               <label htmlFor="email" className="sr-only">
                 Email
@@ -49,8 +78,8 @@ export default function Login() {
                 required
                 className="relative block w-full px-3 py-3 border border-[var(--border)] placeholder-[var(--text)] opacity-70 text-[var(--text)] bg-[var(--bg)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--highlight)] focus:border-transparent transition-all duration-200"
                 placeholder="Seu melhor email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={formData.email}
+                onChange={handleChange}
               />
             </div>
             <div>
@@ -61,49 +90,41 @@ export default function Login() {
                 id="password"
                 name="password"
                 type="password"
-                autoComplete="current-password"
+                autoComplete="new-password"
                 required
                 className="relative block w-full px-3 py-3 border border-[var(--border)] placeholder-[var(--text)] opacity-70 text-[var(--text)] bg-[var(--bg)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--highlight)] focus:border-transparent transition-all duration-200"
-                placeholder="Sua senha"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Crie uma senha"
+                value={formData.password}
+                onChange={handleChange}
               />
             </div>
-          </div>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <input
-                id="remember-me"
-                name="remember-me"
-                type="checkbox"
-                className="h-4 w-4 text-[var(--highlight)] focus:ring-[var(--highlight)] border-[var(--border)] rounded bg-[var(--bg)]"
-              />
-              <label
-                htmlFor="remember-me"
-                className="ml-2 block text-sm text-[var(--text)]"
-              >
-                Lembrar de mim
+            <div>
+              <label htmlFor="confirmPassword" className="sr-only">
+                Confirmar senha
               </label>
-            </div>
-            <div className="text-sm">
-              <Link
-                to="/recuperar-senha"
-                className="font-medium text-[var(--highlight)] hover:opacity-80 transition-opacity duration-200"
-              >
-                Esqueceu sua senha?
-              </Link>
+              <input
+                id="confirmPassword"
+                name="confirmPassword"
+                type="password"
+                autoComplete="new-password"
+                required
+                className="relative block w-full px-3 py-3 border border-[var(--border)] placeholder-[var(--text)] opacity-70 text-[var(--text)] bg-[var(--bg)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--highlight)] focus:border-transparent transition-all duration-200"
+                placeholder="Confirme sua senha"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+              />
             </div>
           </div>
           <div className="flex items-center">
             <input
-              id="terms-login"
-              name="terms-login"
+              id="terms"
+              name="terms"
               type="checkbox"
               required
               className="h-4 w-4 text-[var(--highlight)] focus:ring-[var(--highlight)] border-[var(--border)] rounded bg-[var(--bg)]"
             />
             <label
-              htmlFor="terms-login"
+              htmlFor="terms"
               className="ml-2 block text-sm text-[var(--text)]"
             >
               Eu concordo com os{' '}
@@ -121,7 +142,7 @@ export default function Login() {
               type="submit"
               className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-[var(--highlight)] hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--highlight)] transition-all duration-200 transform hover:-translate-y-0.5"
             >
-              Entrar
+              Criar conta
             </button>
           </div>
           <div className="mt-6">
@@ -131,7 +152,7 @@ export default function Login() {
               </div>
               <div className="relative flex justify-center text-sm">
                 <span className="px-2 bg-[var(--secondary-bg)] text-[var(--text)] opacity-70">
-                  Ou continue com
+                  Ou cadastre-se com
                 </span>
               </div>
             </div>
@@ -143,6 +164,7 @@ export default function Login() {
                 <FaGoogle className="w-5 h-5 text-red-500" />
                 <span className="ml-2">Google</span>
               </button>
+
               <button
                 type="button"
                 className="w-full inline-flex justify-center items-center py-2 px-4 border border-[var(--border)] rounded-md shadow-sm bg-[var(--bg)] text-sm font-medium text-[var(--text)] opacity-70 hover:opacity-100 transition-colors duration-200"
