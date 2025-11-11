@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import logo from "../../assets/logo/logo-side-green.png";
 
 export default function Login() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) navigate("/");
+  }, []);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const handleSubmit = (e: React.FormEvent) => {
@@ -17,6 +23,7 @@ export default function Login() {
       .then((r) => {
         localStorage.setItem("token", r.data.token);
         localStorage.setItem("tipo_usuario", r.data.tipo_usuario);
+        navigate("/");
       });
   };
   return (
