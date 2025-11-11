@@ -12,6 +12,7 @@ import {
     CaretDownFill,
 } from "react-bootstrap-icons";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./../css/footer.css";
 
 export const Footer = () => {
@@ -184,14 +185,20 @@ export const Footer = () => {
                                             </button>
                                         </li>
                                         <li>
-                                            <button className="text-sm text-[var(--text)] opacity-70 hover:opacity-100 transition-all duration-200">
+                                            <Link 
+                                                to="/privacidade" 
+                                                className="text-sm text-[var(--text)] opacity-70 hover:opacity-100 transition-all duration-200"
+                                            >
                                                 Política de Privacidade
-                                            </button>
+                                            </Link>
                                         </li>
                                         <li>
-                                            <button className="text-sm text-[var(--text)] opacity-70 hover:opacity-100 transition-all duration-200">
+                                            <Link 
+                                                to="/termos" 
+                                                className="text-sm text-[var(--text)] opacity-70 hover:opacity-100 transition-all duration-200"
+                                            >
                                                 Termos de Uso
-                                            </button>
+                                            </Link>
                                         </li>
                                         <li>
                                             <button className="text-sm text-[var(--text)] opacity-70 hover:opacity-100 transition-all duration-200">

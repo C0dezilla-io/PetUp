@@ -7,6 +7,9 @@ import DoarPets from "./components/pages/DoarPets.tsx";
 import Perfil from "./components/pages/Perfil.tsx";
 import Ongs from "./components/pages/Ongs.tsx";
 import NotFound from "./components/pages/NotFound.tsx";
+import Cadastro from "./components/pages/Cadastro.tsx";
+import Termos from "./components/pages/Termos.tsx";
+import Privacidade from "./components/pages/Privacidade.tsx";
 
 function App() {
   return (
@@ -20,6 +23,9 @@ function App() {
           <Route path="/doar/" element={<DoarPets />} />
           <Route path="/perfil/" element={<Perfil />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/cadastro/" element={<Cadastro />} />
+          <Route path="/termos/" element={<Termos />} />
+          <Route path="/privacidade/" element={<Privacidade />} />
         </Routes>
       </Layout>
     </BrowserRouter>
