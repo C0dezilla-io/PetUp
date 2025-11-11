@@ -16,8 +16,8 @@ export type petType = {
   especie: string;
   raca: string;
   porte: string;
-  peso: string;
-  idade: string;
+  peso: number;
+  idade: number;
   sexo: string;
   sobre: string;
   caminhoFoto: string | null;

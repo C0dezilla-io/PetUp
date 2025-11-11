@@ -58,11 +58,11 @@ export default function PetModal({ pet }: PetModalProps) {
           </div>
           <div className="peso">
             <span className="text-xs text-[var(--tertiary-text)]">Peso</span>
-            <p>{currentPet.peso}</p>
+            <p>{`${currentPet.peso}Kg`}</p>
           </div>
           <div className="idade">
             <span className="text-xs text-[var(--tertiary-text)]">Idade</span>
-            <p>{currentPet.idade}</p>
+            <p>{`${currentPet.idade} anos`}</p>
           </div>
           <div className="especie">
             <span className="text-xs text-[var(--tertiary-text)]">Espécie</span>
