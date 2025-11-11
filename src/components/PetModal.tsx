@@ -27,7 +27,15 @@ export default function PetModal({ pet }: PetModalProps) {
         className="modal grid md:grid-cols-5 rounded-3xl w-[60vw] h-[60vh] overflow-hidden bg-[var(--bg)] z-2"
       >
         <div className="modalImage w-full max-h-[70vh] flex justify-center md:col-span-3 overflow-hidden">
-          <img src={currentPet.image} alt="" className="object-cover w-full" />
+          <img
+            src={
+              currentPet.caminhoFoto
+                ? currentPet.caminhoFoto
+                : "/src/assets/petNotFound.png"
+            }
+            alt=""
+            className="object-cover w-full"
+          />
         </div>
         <div className="modalContent items-center grid grid-cols-2 justify-between md:col-span-2 relative p-8">
           <button
@@ -64,9 +72,15 @@ export default function PetModal({ pet }: PetModalProps) {
             <span className="text-xs text-[var(--tertiary-text)]">Porte</span>
             <p>{currentPet.porte}</p>
           </div>
-          <div className="raca col-span-2">
+          <div className="raca">
             <span className="text-xs text-[var(--tertiary-text)]">Raça</span>
             <p>{currentPet.raca}</p>
+          </div>
+          <div className="localizacao">
+            <span className="text-xs text-[var(--tertiary-text)]">
+              Localização
+            </span>
+            <p>{`${currentPet.localizacao.cidade} - ${currentPet.localizacao.estado}`}</p>
           </div>
           <div className="sobre col-span-2">
             <span className="text-xs text-[var(--tertiary-text)]">
