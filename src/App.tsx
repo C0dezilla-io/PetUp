@@ -10,6 +10,7 @@ import NotFound from "./components/pages/NotFound.tsx";
 import Cadastro from "./components/pages/Cadastro.tsx";
 import Termos from "./components/pages/Termos.tsx";
 import Privacidade from "./components/pages/Privacidade.tsx";
+import FormularioAdocao from "./components/pages/FormularioAdocao.tsx";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/cadastro/" element={<Cadastro />} />
           <Route path="/termos/" element={<Termos />} />
           <Route path="/privacidade/" element={<Privacidade />} />
+          <Route path="/formulario-de-adocao" element={<FormularioAdocao />} />
         </Routes>
       </Layout>
     </BrowserRouter>

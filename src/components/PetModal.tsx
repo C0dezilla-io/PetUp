@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { X, GenderMale, GenderFemale } from "react-bootstrap-icons";
 import type { petType } from "./PetCard.tsx";
+import { useNavigate } from "react-router-dom";
 
 interface PetModalProps {
   pet: petType | null;
@@ -8,6 +9,7 @@ interface PetModalProps {
 
 export default function PetModal({ pet }: PetModalProps) {
   const [currentPet, setCurrentPet] = useState(pet);
+  const navigate = useNavigate();
 
   const modalDismiss = () => setCurrentPet(null);
 
@@ -24,12 +26,12 @@ export default function PetModal({ pet }: PetModalProps) {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="modal grid md:grid-cols-5 rounded-3xl w-[60vw] h-[60vh] overflow-hidden bg-[var(--bg)] z-2"
+        className="modal grid md:grid-cols-5 rounded-3xl w-[85vw] h-[80vh] md:w-[60vw] md:h-[60vh] overflow-hidden bg-[var(--bg)] z-2"
       >
-        <div className="modalImage w-full max-h-[70vh] flex justify-center md:col-span-3 overflow-hidden">
+        <div className="modalImage w-full max-h-[70vh] flex justify-center items-start md:col-span-3 overflow-hidden">
           <img src={currentPet.image} alt="" className="object-cover w-full" />
         </div>
-        <div className="modalContent items-center grid grid-cols-2 justify-between md:col-span-2 relative p-8">
+        <div className="modalContent items-center grid grid-cols-2 gap-3 justify-between md:col-span-2 relative p-8">
           <button
             onClick={modalDismiss}
             className="absolute text-2xl top-3 right-3 cursor-pointer"
@@ -74,7 +76,10 @@ export default function PetModal({ pet }: PetModalProps) {
             </span>
             <p>{currentPet.sobre}</p>
           </div>
-          <button className="col-span-2 rounded-lg py-2 border border-[var(--highlight)] text-[var(--highlight)] hover:bg-[var(--highlight)] hover:text-[var(--bg)] transition-colors duration-300 cursor-pointer">
+          <button
+            onClick={() => navigate("/formulario-de-adocao")}
+            className="col-span-2 rounded-lg py-2 border border-[var(--highlight)] text-[var(--highlight)] hover:bg-[var(--highlight)] hover:text-[var(--bg)] transition-colors duration-300 cursor-pointer"
+          >
             Quero Adotar
           </button>
         </div>

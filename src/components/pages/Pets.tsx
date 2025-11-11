@@ -52,9 +52,9 @@ export default function Pets() {
   };
 
   return (
-    <section className="grid grid-cols-12">
+    <section className="grid grid-cols-12 py-12">
       <div className="col-span-10 col-start-2">
-        <h1 className="text-2xl mt-12">Pets Disponíveis</h1>
+        <h1 className="text-2xl">Pets Disponíveis</h1>
         <ul className="mt-8 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
           {testPets.map((pet, i) => (
             <PetCard pet={pet} petModalFunction={handlePetClick} key={i} />
