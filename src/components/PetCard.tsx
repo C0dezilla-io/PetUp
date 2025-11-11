@@ -1,24 +1,30 @@
 import { GenderFemale, GenderMale } from "react-bootstrap-icons";
 
-export type ongType = {
-  nome: string;
+export type responsavelType = {
+  responsavelId: number;
+  tipo_usuario: string;
+};
+
+export type localizacaoType = {
   cidade: string;
   estado: string;
 };
 
 export type petType = {
-  id: number;
+  animalId: number;
   nome: string;
   especie: string;
   raca: string;
   porte: string;
-  peso: string;
-  idade: string;
+  peso: number;
+  idade: number;
   sexo: string;
   sobre: string;
-  image: string;
-  ong: ongType;
-  adotado: boolean;
+  caminhoFoto: string | null;
+  localizacao: localizacaoType;
+  responsavel: responsavelType;
+  is_adotado: boolean;
+  criado: string;
 };
 
 interface PetCardPropsType {
@@ -38,7 +44,9 @@ export default function PetCard({ pet, petModalFunction }: PetCardPropsType) {
     >
       <div className="aspect-square flex justify-center intems-center overflow-hidden">
         <img
-          src={pet.image}
+          src={
+            pet.caminhoFoto ? pet.caminhoFoto : "/src/assets/petNotFound.png"
+          }
           alt=""
           className="aspect-square object-cover w-full group-hover:scale-110 transition-transform duration-300 ease-out"
         />
@@ -52,7 +60,7 @@ export default function PetCard({ pet, petModalFunction }: PetCardPropsType) {
             <GenderMale className="text-xl text-blue-700" />
           )}
         </div>
-        <span className="mt-4 mb-2 text-sm">{`${pet.ong.nome}, ${pet.ong.cidade} - ${pet.ong.estado}`}</span>
+        <span className="mt-4 mb-2 text-sm">{`${pet.localizacao.cidade} - ${pet.localizacao.estado}`}</span>
       </div>
     </button>
   );
