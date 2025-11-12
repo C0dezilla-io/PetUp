@@ -1,4 +1,5 @@
 import { GenderFemale, GenderMale } from "react-bootstrap-icons";
+import { useNavigate } from "react-router-dom";
 
 export type responsavelType = {
   responsavelId: number;
@@ -29,12 +30,13 @@ export type petType = {
 
 interface PetCardPropsType {
   pet: petType;
-  petModalFunction: (pet: petType | null) => void;
 }
 
-export default function PetCard({ pet, petModalFunction }: PetCardPropsType) {
+export default function PetCard({ pet }: PetCardPropsType) {
+  const navigate = useNavigate();
+
   const handleClick = () => {
-    petModalFunction(pet);
+    navigate(`/pets/${pet.animalId}`);
   };
 
   return (
