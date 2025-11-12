@@ -1,18 +1,19 @@
 import { useState, useEffect } from "react";
 import { X, GenderMale, GenderFemale } from "react-bootstrap-icons";
 import type { petType } from "./PetCard.tsx";
+import { useNavigate } from "react-router-dom";
 
 interface PetModalProps {
   pet: petType | null;
-  dismissNotifier?: (pet: petType | null) => void;
 }
 
-export default function PetModal({ pet, dismissNotifier }: PetModalProps) {
+export default function PetModal({ pet }: PetModalProps) {
   const [currentPet, setCurrentPet] = useState(pet);
+  const navigate = useNavigate();
 
   const modalDismiss = () => {
+    navigate("/pets/");
     setCurrentPet(null);
-    if (dismissNotifier) dismissNotifier(null);
   };
 
   useEffect(() => {
