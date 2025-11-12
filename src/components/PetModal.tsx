@@ -4,12 +4,16 @@ import type { petType } from "./PetCard.tsx";
 
 interface PetModalProps {
   pet: petType | null;
+  dismissNotifier?: (pet: petType | null) => void;
 }
 
-export default function PetModal({ pet }: PetModalProps) {
+export default function PetModal({ pet, dismissNotifier }: PetModalProps) {
   const [currentPet, setCurrentPet] = useState(pet);
 
-  const modalDismiss = () => setCurrentPet(null);
+  const modalDismiss = () => {
+    setCurrentPet(null);
+    if (dismissNotifier) dismissNotifier(null);
+  };
 
   useEffect(() => {
     setCurrentPet(pet);
@@ -24,13 +28,15 @@ export default function PetModal({ pet }: PetModalProps) {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="modal grid md:grid-cols-5 rounded-3xl w-[60vw] h-[60vh] overflow-hidden bg-[var(--bg)] z-2"
+        className="modal grid md:grid-cols-5 rounded-3xl w-[90vw] h-[75vh] md:w-[60vw] md:h-[60vh] overflow-hidden bg-[var(--bg)] z-2"
       >
         <div className="modalImage w-full max-h-[70vh] flex justify-center md:col-span-3 overflow-hidden">
           <img
             src={
               currentPet.caminhoFoto
-                ? currentPet.caminhoFoto
+                ? import.meta.env.VITE_BACKEND_URL +
+                  "/" +
+                  currentPet.caminhoFoto
                 : "/src/assets/petNotFound.png"
             }
             alt=""
