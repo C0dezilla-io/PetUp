@@ -28,7 +28,7 @@ export default function PetModal({ pet, dismissNotifier }: PetModalProps) {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="modal grid md:grid-cols-5 rounded-3xl w-[60vw] h-[60vh] overflow-hidden bg-[var(--bg)] z-2"
+        className="modal grid md:grid-cols-5 rounded-3xl w-[90vw] h-[75vh] md:w-[60vw] md:h-[60vh] overflow-hidden bg-[var(--bg)] z-2"
       >
         <div className="modalImage w-full max-h-[70vh] flex justify-center md:col-span-3 overflow-hidden">
           <img

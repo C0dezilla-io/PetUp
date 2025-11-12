@@ -56,7 +56,7 @@ export default function DoarPets() {
       image[0]?.file
     ) {
       formdata.append("nome", nome);
-      formdata.append("especie", especie != "outra" ? outraEspecie! : especie!);
+      formdata.append("especie", especie == "outra" ? outraEspecie! : especie!);
       formdata.append("raca", raca);
       formdata.append("porte", porte);
       formdata.append("peso", peso.toString());
@@ -75,7 +75,9 @@ export default function DoarPets() {
             },
           }
         );
+        navigate(`/pets/${res.data.animalId}`);
       } catch (e) {
+        window.alert("Erro ao salvar, verifique as informações.");
         console.error(e);
       }
     }
@@ -124,10 +126,10 @@ export default function DoarPets() {
             }
           >
             <option value="">Espécie</option>
-            <option value="cachorro">Cachorro</option>
-            <option value="gato">Gato</option>
-            <option value="hamster">Hamster</option>
-            <option value="passaro">Pássaro</option>
+            <option value="Cachorro">Cachorro</option>
+            <option value="Gato">Gato</option>
+            <option value="Hamster">Hamster</option>
+            <option value="Pássaro">Pássaro</option>
             <option value="outro">Outro</option>
           </select>
         </div>

@@ -3,17 +3,25 @@ import axios from "axios";
 import PetCard from "../PetCard.tsx";
 import PetModal from "../PetModal.tsx";
 import type { petType } from "../PetCard.tsx";
+import { useParams } from "react-router-dom";
 
 export default function Pets() {
+  const { id } = useParams();
   const [pets, setPets] = useState<petType[]>([]);
+  const [currentPet, setCurrentPet] = useState<petType | null>(null);
 
   useEffect(() => {
+    if (id) {
+      axios
+        .get(`${import.meta.env.VITE_BACKEND_URL}/api/animais/${id}`)
+        .then((r) => {
+          setCurrentPet(r.data);
+        });
+    }
     axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/animais`).then((r) => {
       setPets(r.data);
     });
   }, []);
-
-  const [currentPet, setCurrentPet] = useState<petType | null>(null);
 
   const handlePetClick = (pet: petType | null) => {
     setCurrentPet(pet);
