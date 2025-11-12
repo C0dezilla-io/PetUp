@@ -1,32 +1,43 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { FaGoogle, FaGithub } from 'react-icons/fa';
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import { FaGoogle, FaGithub } from "react-icons/fa";
 import logo from "../../assets/logo/logo-side-green.png";
 
 export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) navigate("/");
+  }, []);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Email:', email);
-    console.log('Password:', password);
+    axios
+      .post(`${import.meta.env.VITE_BACKEND_URL}/api/validators/login`, {
+        email: email,
+        senha: password,
+      })
+      .then((r) => {
+        localStorage.setItem("token", r.data.token);
+        localStorage.setItem("tipo_usuario", r.data.tipo_usuario);
+        navigate("/");
+      });
   };
   return (
     <div className="min-h-screen flex items-center justify-center bg-[var(--bg)] py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8 bg-[var(--secondary-bg)] p-10 rounded-xl shadow-lg">
         <div className="text-center">
           <div className="flex justify-center mb-6">
-            <img 
-              src={logo} 
-              alt="Logo PetUp" 
-              className="h-16 w-auto"
-            />
+            <img src={logo} alt="Logo PetUp" className="h-16 w-auto" />
           </div>
           <h2 className="mt-6 text-3xl font-extrabold text-[var(--text)]">
             Entre na sua conta
           </h2>
           <p className="mt-2 text-sm text-[var(--text)] opacity-70">
-            Ou{' '}
+            Ou{" "}
             <Link
               to="/cadastro"
               className="font-medium text-[var(--highlight)] hover:opacity-80 transition-opacity duration-200"
@@ -106,12 +117,18 @@ export default function Login() {
               htmlFor="terms-login"
               className="ml-2 block text-sm text-[var(--text)]"
             >
-              Eu concordo com os{' '}
-              <Link to="/termos" className="text-[var(--highlight)] hover:opacity-80 transition-opacity duration-200">
+              Eu concordo com os{" "}
+              <Link
+                to="/termos"
+                className="text-[var(--highlight)] hover:opacity-80 transition-opacity duration-200"
+              >
                 Termos de Serviço
-              </Link>{' '}
-              e{' '}
-              <Link to="/privacidade" className="text-[var(--highlight)] hover:opacity-80 transition-opacity duration-200">
+              </Link>{" "}
+              e{" "}
+              <Link
+                to="/privacidade"
+                className="text-[var(--highlight)] hover:opacity-80 transition-opacity duration-200"
+              >
                 Política de Privacidade
               </Link>
             </label>

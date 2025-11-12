@@ -1,14 +1,15 @@
 import logo from "./../assets/logo/logo-side-green.png";
 import { MoonStarsFill, SunFill, XLg, List } from "react-bootstrap-icons";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./../css/header.css";
-
 
 function Header() {
   const [isNavSupportedShown, setIsNavSupportedShown] = useState(false);
   const [isOnDarkMode, setIsOnDarkMode] = useState(true);
+  const location = useLocation();
 
+  const token = localStorage.getItem("token");
 
   const navigate = useNavigate();
   const [curpage, setCurpage] = useState(useLocation().pathname);
@@ -20,6 +21,10 @@ function Header() {
   const hideNavbarSupported = () => {
     setIsNavSupportedShown(false);
   };
+
+  useEffect(() => {
+    setCurpage(location.pathname);
+  });
 
   const toggleDark = () => {
     const root: HTMLElement = document.querySelector("#root")!;
@@ -37,7 +42,13 @@ function Header() {
     navigate(path);
     setCurpage(path);
     setIsNavSupportedShown(false);
-  }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("tipo_usuario");
+    handleRedirect("/");
+  };
 
   return (
     <header className="bg-[var(--bg)] grid grid-cols-12 shadow-lg sticky top-0 z-30">
@@ -75,11 +86,7 @@ function Header() {
           ></div>
           <ul
             className={`navbar-supported bg-[var(--bg)] flex flex-col z-60 px-24 py-10 gap-2 items-center fixed top-0 left-0 h-full duration-400 transition-transform border border-[var(--highlight)] md:border-none md:translate-0 md:flex-row md:static md:p-0
-              ${
-                isNavSupportedShown
-                  ? "translate-x-0"
-                  : "translate-x-[-100%]"
-              }`}
+              ${isNavSupportedShown ? "translate-x-0" : "translate-x-[-100%]"}`}
           >
             <li className={!isNavSupportedShown ? "hidden" : ""}>
               <button
@@ -100,8 +107,10 @@ function Header() {
             </li>
             <li>
               <button
-              onClick={() => handleRedirect("/pets/")}
-                className={`btn btn-link ${curpage == "/pets/" ? "active" : ""}`}
+                onClick={() => handleRedirect("/pets/")}
+                className={`btn btn-link ${
+                  curpage == "/pets/" ? "active" : ""
+                }`}
               >
                 <p className="text-sm">Pets</p>
               </button>
@@ -109,7 +118,9 @@ function Header() {
             <li>
               <button
                 onClick={() => handleRedirect("/ongs/")}
-                className={`btn btn-link ${curpage == "/ongs/" ? "active" : ""}`}
+                className={`btn btn-link ${
+                  curpage == "/ongs/" ? "active" : ""
+                }`}
               >
                 <p className="text-sm">ONGs</p>
               </button>
@@ -117,29 +128,44 @@ function Header() {
             <li>
               <button
                 onClick={() => handleRedirect("/doar/")}
-                className={`btn btn-link ${curpage == "/doar/" ? "active" : ""}`}
+                className={`btn btn-link ${
+                  curpage == "/doar/" ? "active" : ""
+                }`}
               >
                 <p className="text-sm">Doar Pet</p>
               </button>
             </li>
-            <li>
-              <button
-                onClick={() => handleRedirect("/perfil/")}
-                className={`btn btn-link ${
-                  curpage == "/perfil/" ? "active" : ""
-                }`}
-              >
-                <p className="text-sm">Meu Perfil</p>
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => handleRedirect("/login")}
-                className="btn btn-outline"
-              >
-                <p className="text-sm">Entrar</p>
-              </button>
-            </li>
+            {token ? (
+              <>
+                <li>
+                  <button
+                    onClick={() => handleRedirect("/perfil/")}
+                    className={`btn btn-link ${
+                      curpage == "/perfil/" ? "active" : ""
+                    }`}
+                  >
+                    <p className="text-sm">Meu Perfil</p>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={handleLogout}
+                    className="rounded-lg py-0.5 px-2 bg-red-500 hover:bg-red-600 cursor:pointer"
+                  >
+                    sair
+                  </button>
+                </li>
+              </>
+            ) : (
+              <li>
+                <button
+                  onClick={() => handleRedirect("/login")}
+                  className="btn btn-outline"
+                >
+                  <p className="text-sm">Entrar</p>
+                </button>
+              </li>
+            )}
           </ul>
         </div>
       </nav>
