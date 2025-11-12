@@ -29,7 +29,7 @@ export type petType = {
 
 interface PetCardPropsType {
   pet: petType;
-  petModalFunction: (pet: petType) => void;
+  petModalFunction: (pet: petType | null) => void;
 }
 
 export default function PetCard({ pet, petModalFunction }: PetCardPropsType) {

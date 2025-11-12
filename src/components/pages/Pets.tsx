@@ -15,7 +15,7 @@ export default function Pets() {
 
   const [currentPet, setCurrentPet] = useState<petType | null>(null);
 
-  const handlePetClick = (pet: petType) => {
+  const handlePetClick = (pet: petType | null) => {
     setCurrentPet(pet);
   };
 
@@ -34,7 +34,7 @@ export default function Pets() {
             <h2>Não há pets disponíveis no momento :(</h2>
           </div>
         )}
-        <PetModal pet={currentPet} />
+        <PetModal pet={currentPet} dismissNotifier={setCurrentPet} />
       </div>
     </section>
   );

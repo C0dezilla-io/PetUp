@@ -4,12 +4,16 @@ import type { petType } from "./PetCard.tsx";
 
 interface PetModalProps {
   pet: petType | null;
+  dismissNotifier?: (pet: petType | null) => void;
 }
 
-export default function PetModal({ pet }: PetModalProps) {
+export default function PetModal({ pet, dismissNotifier }: PetModalProps) {
   const [currentPet, setCurrentPet] = useState(pet);
 
-  const modalDismiss = () => setCurrentPet(null);
+  const modalDismiss = () => {
+    setCurrentPet(null);
+    if (dismissNotifier) dismissNotifier(null);
+  };
 
   useEffect(() => {
     setCurrentPet(pet);
