@@ -1,12 +1,13 @@
 import logo from "./../assets/logo/logo-side-green.png";
 import { MoonStarsFill, SunFill, XLg, List } from "react-bootstrap-icons";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./../css/header.css";
 
 function Header() {
   const [isNavSupportedShown, setIsNavSupportedShown] = useState(false);
   const [isOnDarkMode, setIsOnDarkMode] = useState(true);
+  const location = useLocation();
 
   const token = localStorage.getItem("token");
 
@@ -20,6 +21,10 @@ function Header() {
   const hideNavbarSupported = () => {
     setIsNavSupportedShown(false);
   };
+
+  useEffect(() => {
+    setCurpage(location.pathname);
+  });
 
   const toggleDark = () => {
     const root: HTMLElement = document.querySelector("#root")!;
