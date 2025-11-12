@@ -28,7 +28,10 @@ function App() {
           <Route path="/cadastro/" element={<Cadastro />} />
           <Route path="/termos/" element={<Termos />} />
           <Route path="/privacidade/" element={<Privacidade />} />
-          <Route path="/formulario-de-adocao" element={<FormularioAdocao />} />
+          <Route
+            path="/formulario-de-adocao/:id"
+            element={<FormularioAdocao />}
+          />
         </Routes>
       </Layout>
     </BrowserRouter>

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
 export default function FormularioAdocao() {
+  const { id } = useParams();
   const [telefone, setTelefone] = useState("");
   const [listaEstados, setListaEstados] = useState<any[]>([]);
   const [estadoSelecionado, setEstadoSelecionado] = useState<string | null>(
@@ -35,6 +37,7 @@ export default function FormularioAdocao() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    console.log(id);
     console.log(telefone);
     console.log(cidadeSelecionada);
     console.log(estadoSelecionado);

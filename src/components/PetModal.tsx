@@ -118,7 +118,9 @@ export default function PetModal({ pet }: PetModalProps) {
             <p>{currentPet.sobre}</p>
           </div>
           <button
-            onClick={() => navigate("/formulario-de-adocao")}
+            onClick={() =>
+              navigate(`/formulario-de-adocao/${currentPet.animalId}`)
+            }
             className="col-span-2 rounded-lg py-2 border border-[var(--highlight)] text-[var(--highlight)] hover:bg-[var(--highlight)] hover:text-[var(--bg)] transition-colors duration-300 cursor-pointer"
           >
             Quero Adotar
