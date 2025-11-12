@@ -30,7 +30,9 @@ export default function PetModal({ pet }: PetModalProps) {
           <img
             src={
               currentPet.caminhoFoto
-                ? currentPet.caminhoFoto
+                ? import.meta.env.VITE_BACKEND_URL +
+                  "/" +
+                  currentPet.caminhoFoto
                 : "/src/assets/petNotFound.png"
             }
             alt=""

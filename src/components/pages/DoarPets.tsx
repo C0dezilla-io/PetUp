@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { FileEarmarkImageFill } from "react-bootstrap-icons";
 import ImagesUploading from "react-images-uploading";
 import type { ImageListType } from "react-images-uploading";
+import axios from "axios";
 
 export default function DoarPets() {
   const navigate = useNavigate();
@@ -39,8 +40,45 @@ export default function DoarPets() {
     if (!localStorage.getItem("token")) navigate("/login");
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const formdata = new FormData();
+
+    if (
+      nome &&
+      (especie || outraEspecie) &&
+      raca &&
+      porte &&
+      peso &&
+      idade &&
+      sexo &&
+      sobre &&
+      image[0]?.file
+    ) {
+      formdata.append("nome", nome);
+      formdata.append("especie", especie != "outra" ? outraEspecie! : especie!);
+      formdata.append("raca", raca);
+      formdata.append("porte", porte);
+      formdata.append("peso", peso.toString());
+      formdata.append("idade", idade.toString());
+      formdata.append("sexo", sexo);
+      formdata.append("sobre", sobre);
+      formdata.append("is_adotado", "false");
+      formdata.append("fotoAnimal", image[0].file);
+      try {
+        const res = await axios.post(
+          `${import.meta.env.VITE_BACKEND_URL}/api/animais`,
+          formdata,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
+      } catch (e) {
+        console.error(e);
+      }
+    }
   };
 
   return (

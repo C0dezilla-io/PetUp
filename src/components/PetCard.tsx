@@ -45,7 +45,9 @@ export default function PetCard({ pet, petModalFunction }: PetCardPropsType) {
       <div className="aspect-square flex justify-center intems-center overflow-hidden">
         <img
           src={
-            pet.caminhoFoto ? pet.caminhoFoto : "/src/assets/petNotFound.png"
+            pet.caminhoFoto
+              ? import.meta.env.VITE_BACKEND_URL + "/" + pet.caminhoFoto
+              : "/src/assets/petNotFound.png"
           }
           alt=""
           className="aspect-square object-cover w-full group-hover:scale-110 transition-transform duration-300 ease-out"
