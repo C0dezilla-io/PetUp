@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 export type responsavelType = {
   responsavelId: number;
   tipo_usuario: string;
+  nome: string;
 };
 
 export type localizacaoType = {
@@ -64,7 +65,7 @@ export default function PetCard({ pet }: PetCardPropsType) {
             <GenderMale className="text-xl text-blue-700" />
           )}
         </div>
-        <span className="mt-4 mb-2 text-sm">{`${pet.localizacao.cidade} - ${pet.localizacao.estado}`}</span>
+        <span className="mt-4 mb-2 text-sm">{`${pet.responsavel.nome}, ${pet.localizacao.cidade} - ${pet.localizacao.estado}`}</span>
       </div>
     </button>
   );

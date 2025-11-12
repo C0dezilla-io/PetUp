@@ -56,7 +56,7 @@ export default function DoarPets() {
       image[0]?.file
     ) {
       formdata.append("nome", nome);
-      formdata.append("especie", especie == "outra" ? outraEspecie! : especie!);
+      formdata.append("especie", especie == "outro" ? outraEspecie! : especie!);
       formdata.append("raca", raca);
       formdata.append("porte", porte);
       formdata.append("peso", peso.toString());
@@ -126,10 +126,10 @@ export default function DoarPets() {
             }
           >
             <option value="">Espécie</option>
-            <option value="Cachorro">Cachorro</option>
-            <option value="Gato">Gato</option>
-            <option value="Hamster">Hamster</option>
-            <option value="Pássaro">Pássaro</option>
+            <option value="C">Cachorro</option>
+            <option value="G">Gato</option>
+            <option value="H">Hamster</option>
+            <option value="P">Pássaro</option>
             <option value="outro">Outro</option>
           </select>
         </div>
@@ -233,6 +233,7 @@ export default function DoarPets() {
             type="number"
             max={30}
             id="idade"
+            step={0.1}
             required
             className="bg-[var(--bg)] w-full text-sm p-3 rounded-lg border border-[var(--text)] focus:outline-none focus:ring-2 focus:ring-[var(--highlight)] focus:border-transparent transition-colors duration-200"
             onChange={(e) => setIdade(parseFloat(e.target.value))}
@@ -244,7 +245,7 @@ export default function DoarPets() {
             htmlFor="peso"
             className="text-[var(--secondary-text)] text-sm"
           >
-            Peso
+            Peso em quilos
             <span className="text-red-600 ms-0.5 text-sm">*</span>
           </label>
           <input
@@ -252,6 +253,7 @@ export default function DoarPets() {
             max={100}
             required
             id="peso"
+            step={0.1}
             className="bg-[var(--bg)] w-full text-sm p-3 rounded-lg border border-[var(--text)] focus:outline-none focus:ring-2 focus:ring-[var(--highlight)] focus:border-transparent transition-colors duration-200"
             onChange={(e) => setPeso(parseFloat(e.target.value))}
           />
@@ -277,7 +279,7 @@ export default function DoarPets() {
 
         <div className="w-full">
           <h2 className="text-sm text-[var(--secondary-text)] mt-3">
-            Escolha uma imagem fofa para o pet
+            Escolha uma foto fofa do pet
             <span className="text-red-600 ms-0.5 text-sm">*</span>
           </h2>
           <ImagesUploading
@@ -296,6 +298,9 @@ export default function DoarPets() {
                 onDragLeave={handleImageDragOut}
                 onDragOver={(e) => e.preventDefault()}
               >
+                <span className="text-sm">
+                  Selecione a imagem ou arraste aqui
+                </span>
                 <div
                   className={`absolute top-0 right-0 left-0 bottom-0 flex flex-col items-center justify-center rounded-lg text-white bg-[hsla(44,100%,50%,0.75)] border-4 border-dashed border-[var(--highlight)] z-10 ${
                     isDragging ? "" : "invisible"
