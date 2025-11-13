@@ -226,7 +226,7 @@ export const Footer = () => {
 
                                 <button
                                     className="md:hidden cursor-pointer relative footerDropdownBtn"
-                                    onClick={() => { 
+                                    onClick={() => {
                                         toggleDropdown(
                                             isContatoDropped,
                                             setIsContatoDropped
@@ -243,7 +243,7 @@ export const Footer = () => {
                                         Contato{" "}
                                         <span
                                             className={`m-1 mb-0 text-sm transition-transform ease duration-300 ${
-                                                isContatoDropped 
+                                                isContatoDropped
                                                     ? "rotate-180"
                                                     : ""
                                             }`}
