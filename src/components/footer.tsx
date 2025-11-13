@@ -96,7 +96,7 @@ export const Footer = () => {
                                         <span
                                             className={`m-1 mb-0 text-sm transition-[rotate] ease duration-300 ${
                                                 isLinksDropped
-                                                    ? "rotate-180" 
+                                                    ? "rotate-180"
                                                     : ""
                                             }`}
                                         >
@@ -173,7 +173,7 @@ export const Footer = () => {
                                         <span
                                             className={`m-1 mb-0 text-sm transition-transform ease duration-300 ${
                                                 isSuportedDropped
-                                                    ? "rotate-180" 
+                                                    ? "rotate-180"
                                                     : ""
                                             }`}
                                         >
@@ -228,7 +228,7 @@ export const Footer = () => {
                                     className="md:hidden cursor-pointer relative footerDropdownBtn"
                                     onClick={() => { 
                                         toggleDropdown(
-                                            isContatoDropped, 
+                                            isContatoDropped,
                                             setIsContatoDropped
                                         );
                                     }}
