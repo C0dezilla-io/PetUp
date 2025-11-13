@@ -196,7 +196,7 @@ export default function Home() {
             <Link to="/doar" className="px-6 py-3 rounded-lg bg-[var(--highlight)] text-white font-medium">
               Doar
             </Link>
-            <Link to="/compartilhar" className="px-6 py-3 rounded-lg border border-[var(--border)]">
+            <Link to="/https://www.instagram.com" className="px-6 py-3 rounded-lg border border-[var(--border)]">
               Compartilhar
             </Link>
           </div>
