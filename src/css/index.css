@@ -47,3 +47,19 @@
   color: #00000090;
   transition: all ease 200ms;
 }
+.custom-cursor-enabled,
+.custom-cursor-enabled * {
+  cursor: none !important;
+}
+
+.custom-cursor-enabled a,
+.custom-cursor-enabled button,
+.custom-cursor-enabled input,
+.custom-cursor-enabled textarea,
+.custom-cursor-enabled select {
+  cursor: auto !important;
+}
+
+.custom-cursor-enabled .custom-cursor {
+  transition: transform 0.12s ease, opacity 0.12s ease;
+}

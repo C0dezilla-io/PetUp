@@ -27,8 +27,7 @@ export const Footer = () => {
         condition: boolean,
         func: React.Dispatch<React.SetStateAction<boolean>>
     ) => {
-        if (condition) func(false);
-        else func(true);
+        func(!condition);
     };
 
     useEffect(() => {
@@ -97,7 +96,7 @@ export const Footer = () => {
                                         <span
                                             className={`m-1 mb-0 text-sm transition-[rotate] ease duration-300 ${
                                                 isLinksDropped
-                                                    ? "rotate-180"
+                                                    ? "rotate-180" 
                                                     : ""
                                             }`}
                                         >
@@ -115,24 +114,36 @@ export const Footer = () => {
                                 >
                                     <ul className="space-y-2 overflow-hidden">
                                         <li>
-                                            <button className="text-sm text-[var(--text)] opacity-70 hover:opacity-100 transition-all duration-200">
+                                            <Link
+                                                to="/"
+                                                className="text-sm text-[var(--text)] opacity-70 hover:opacity-100 transition-all duration-200 block text-left"
+                                            >
                                                 Início
-                                            </button>
+                                            </Link>
                                         </li>
                                         <li>
-                                            <button className="text-sm text-[var(--text)] opacity-70 hover:opacity-100 transition-all duration-200">
+                                            <Link
+                                                to="/pets"
+                                                className="text-sm text-[var(--text)] opacity-70 hover:opacity-100 transition-all duration-200 block text-left"
+                                            >
                                                 Pets
-                                            </button>
+                                            </Link>
                                         </li>
                                         <li>
-                                            <button className="text-sm text-[var(--text)] opacity-70 hover:opacity-100 transition-all duration-200">
+                                            <Link
+                                                to="/ongs"
+                                                className="text-sm text-[var(--text)] opacity-70 hover:opacity-100 transition-all duration-200 block text-left"
+                                            >
                                                 ONGs Parceiras
-                                            </button>
+                                            </Link>
                                         </li>
                                         <li>
-                                            <button className="text-sm text-[var(--text)] opacity-70 hover:opacity-100 transition-all duration-200">
+                                            <Link
+                                                to="/doar"
+                                                className="text-sm text-[var(--text)] opacity-70 hover:opacity-100 transition-all duration-200 block text-left"
+                                            >
                                                 Doar um Pet
-                                            </button>
+                                            </Link>
                                         </li>
                                     </ul>
                                 </div>
@@ -162,7 +173,7 @@ export const Footer = () => {
                                         <span
                                             className={`m-1 mb-0 text-sm transition-transform ease duration-300 ${
                                                 isSuportedDropped
-                                                    ? "rotate-180"
+                                                    ? "rotate-180" 
                                                     : ""
                                             }`}
                                         >
@@ -215,9 +226,9 @@ export const Footer = () => {
 
                                 <button
                                     className="md:hidden cursor-pointer relative footerDropdownBtn"
-                                    onClick={() => {
+                                    onClick={() => { 
                                         toggleDropdown(
-                                            isContatoDropped,
+                                            isContatoDropped, 
                                             setIsContatoDropped
                                         );
                                     }}
@@ -232,7 +243,7 @@ export const Footer = () => {
                                         Contato{" "}
                                         <span
                                             className={`m-1 mb-0 text-sm transition-transform ease duration-300 ${
-                                                isContatoDropped
+                                                isContatoDropped 
                                                     ? "rotate-180"
                                                     : ""
                                             }`}
@@ -293,7 +304,7 @@ export const Footer = () => {
                                             >
                                                 <GeoAlt className="h-4 w-4 text-[var(--text)] opacity-70" />
                                                 <span className="text-sm text-[var(--text)] opacity-70">
-                                                    Marilia, SP
+                                                    Marília, SP
                                                 </span>
                                             </div>
                                         </div>

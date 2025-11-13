@@ -10,10 +10,14 @@ import NotFound from "./components/pages/NotFound.tsx";
 import Cadastro from "./components/pages/Cadastro.tsx";
 import Termos from "./components/pages/Termos.tsx";
 import Privacidade from "./components/pages/Privacidade.tsx";
+import CustomCursor from "./components/CustomCursor.tsx";
+import WhatsAppButton from "./components/WhatsAppButton.tsx";
 
 function App() {
   return (
     <BrowserRouter>
+      <CustomCursor />
+      <WhatsAppButton />
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
