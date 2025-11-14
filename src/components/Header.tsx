@@ -47,6 +47,7 @@ function Header() {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("tipo_usuario");
+    localStorage.removeItem("userId");
     handleRedirect("/");
   };
 
@@ -141,12 +142,12 @@ function Header() {
               <>
                 <li>
                   <button
-                    onClick={() => handleRedirect("/perfil/")}
+                    onClick={() => handleRedirect("/meuspets/")}
                     className={`btn btn-link ${
-                      curpage == "/perfil/" ? "active" : ""
+                      curpage == "/meuspets/" ? "active" : ""
                     }`}
                   >
-                    <p className="text-sm">Meu Perfil</p>
+                    <p className="text-sm">Meus Pets</p>
                   </button>
                 </li>
                 <li>

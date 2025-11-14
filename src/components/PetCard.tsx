@@ -52,7 +52,7 @@ export default function PetCard({ pet }: PetCardPropsType) {
               ? import.meta.env.VITE_BACKEND_URL + "/" + pet.caminhoFoto
               : "/src/assets/petNotFound.png"
           }
-          alt=""
+          alt={`Foto de ${pet.nome}`}
           className="aspect-square object-cover w-full group-hover:scale-110 transition-transform duration-300 ease-out"
         />
       </div>
