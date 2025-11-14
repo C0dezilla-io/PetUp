@@ -12,7 +12,7 @@ function Header() {
   const token = localStorage.getItem("token");
 
   const navigate = useNavigate();
-  const [curpage, setCurpage] = useState(useLocation().pathname);
+  const [curpage, setCurpage] = useState(location.pathname);
 
   const showNavbarSupported = () => {
     setIsNavSupportedShown(true);
@@ -24,7 +24,7 @@ function Header() {
 
   useEffect(() => {
     setCurpage(location.pathname);
-  });
+  }, [location.pathname]);
 
   const toggleDark = () => {
     const root: HTMLElement = document.querySelector("#root")!;
@@ -54,12 +54,14 @@ function Header() {
   return (
     <header className="bg-[var(--bg)] grid grid-cols-12 shadow-lg sticky top-0 z-30">
       <nav className="grid grid-cols-12 col-span-12 col-start-1 md:col-span-10 md:col-start-2 align-center">
-        <a
-          href="#"
-          className="navbar-brand col-span-2 md:col-span-1 m-1.5 sm:m-2 md:m-0 md:my-3"
+        <button
+          type="button"
+          onClick={() => handleRedirect("/")}
+          aria-label="Home Page"
+          className="cursor-pointer navbar-brand col-span-2 md:col-span-1 m-1.5 sm:m-2 md:m-0 md:my-3 p-0 bg-transparent border-0"
         >
           <img src={logo} alt="Logo PetUp" className="w-full" />
-        </a>
+        </button>
         <div className="navbar-nav flex justify-end items-center col-span-10 md:col-span-11 gap-2">
           <button
             onClick={toggleDark}

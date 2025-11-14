@@ -14,10 +14,14 @@ import FormularioAdocao from "./components/pages/FormularioAdocao.tsx";
 import MeusPets from "./components/pages/MeusPets.tsx";
 import PedidosAdocao from "./components/pages/PedidosAdocao.tsx";
 import { EditarPet } from "./components/pages/EditarPet.tsx";
+import CustomCursor from "./components/CustomCursor.tsx";
+import WhatsAppButton from "./components/WhatsAppButton.tsx";
 
 function App() {
   return (
     <BrowserRouter>
+      <CustomCursor />
+      <WhatsAppButton />
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
