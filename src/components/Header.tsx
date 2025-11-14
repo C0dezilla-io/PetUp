@@ -142,16 +142,6 @@ function Header() {
               <>
                 <li>
                   <button
-                    onClick={() => handleRedirect("/perfil/")}
-                    className={`btn btn-link ${
-                      curpage == "/perfil/" ? "active" : ""
-                    }`}
-                  >
-                    <p className="text-sm">Meu Perfil</p>
-                  </button>
-                </li>
-                <li>
-                  <button
                     onClick={() => handleRedirect("/meuspets/")}
                     className={`btn btn-link ${
                       curpage == "/meuspets/" ? "active" : ""
