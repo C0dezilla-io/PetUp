@@ -1,10 +1,62 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Carousel from "../Carousel";
 import OngsScroller from "../OngsScroller";
 import { motion } from "framer-motion";
 import { FaPaw } from "react-icons/fa";
+import mascote1 from "../../assets/logo/mascote.gif";
+import mascote2 from "../../assets/logo/mascote2.gif";
 
 export default function Home() {
+  const [showBalloon, setShowBalloon] = useState(true);
+  const [mascoteSrc, setMascoteSrc] = useState(mascote1);
+  const [openId, setOpenId] = useState<number | null>(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowBalloon(false), 5000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setMascoteSrc((prev) => (prev === mascote1 ? mascote2 : mascote1));
+    }, 10000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const faqs = [
+    {
+      id: 1,
+      person: "Marcos Limao",
+      q: "Como funciona para adotar um pet?",
+      a: "Você escolhe o animal de estimação, preenche o formulário de adoção, combina com a ONG ou responsável uma visita para conhecer o animal e assina os termos de cuidado. Pronto, novo amigo!",
+    },
+    {
+      id: 2,
+      person: "Fernando Camelo",
+      q: "Preciso pagar taxa para adotar?",
+      a: "Algumas ONGs pedem uma taxa simbólica que ajuda a cobrir vacinas e castração, outras trabalham apenas com doações. As informações aparecem no perfil do pet/ONG.",
+    },
+    {
+      id: 3,
+      person: "Pedro Pastos",
+      q: "Posso devolver o animal se não der certo?",
+      a: "Sim! Muitas ONGs têm políticas de retorno e oferecem suporte antes que você tome essa decisão. Comunicar a ONG é sempre o primeiro passo.",
+    },
+    {
+      id: 4,
+      person: "Erick Snow",
+      q: "Como doar diretamente a uma ONG?",
+      a: "Cada ONG parceira tem detalhes no perfil com opções de doação (PIX, conta bancária, campanhas). Também é possível apoiar comprando via lojas parceiras.",
+    },
+    {
+      id: 5,
+      person: "Carla Oliveira",
+      q: "Como sei que a ONG é confiável?",
+      a: "Priorizamos ONGs com histórico, transparência, fotos e depoimentos. No perfil há contatos e links para redes sociais para você checar.",
+    },
+  ];
+
   return (
     <main className="relative overflow-hidden md:col-span-10 md:col-start-2 space-y-12">
       <div className="absolute inset-0 pointer-events-none opacity-10">
@@ -20,6 +72,34 @@ export default function Home() {
             }}
           />
         ))}
+      </div>
+      <div className="hidden md:flex fixed bottom-10 right-[-0.4rem] z-50 flex-col items-end gap-3">
+        {showBalloon && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ delay: 0.5, duration: 0.6, type: "spring" }}
+            className="relative bg-white text-gray-800 text-sm sm:text-base font-medium px-5 py-3 rounded-2xl shadow-lg border border-gray-200 max-w-[260px]"
+          >
+            <p>
+              🐾 Venha adotar meus irmãos na página de{" "}
+              <Link to="/pets" className="text-[#0CB39C] font-semibold hover:underline">
+                Pets
+              </Link>
+              !
+            </p>
+            <div className="absolute -bottom-3 right-12 w-0 h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-t-8 border-t-white"></div>
+          </motion.div>
+        )}
+
+        <motion.img
+          src={mascoteSrc}
+          alt="Mascote PetUp"
+          className="w-28 h-28 drop-shadow-xl hover:scale-110 transition-transform cursor-pointer"
+          animate={{ y: [0, -8, 0] }}
+          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+        />
       </div>
       <header>
         <Carousel />
@@ -37,13 +117,13 @@ export default function Home() {
           <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
             <Link
               to="/pets"
-              className="inline-flex items-center justify-center px-5 py-3 rounded-lg bg-[var(--highlight)] text-white font-medium shadow-sm hover:opacity-90 transition"
+              className="px-5 py-3 rounded-lg bg-[var(--highlight)] text-white font-medium shadow-sm hover:opacity-90 transition"
             >
               Ver animais para adoção
             </Link>
             <Link
               to="/ongs"
-              className="inline-flex items-center justify-center px-5 py-3 rounded-lg border border-[var(--border)] text-[var(--text)] font-medium bg-transparent hover:bg-[var(--secondary-bg)] transition"
+              className="px-5 py-3 rounded-lg border border-[var(--border)] text-[var(--text)] hover:bg-[var(--secondary-bg)] transition"
             >
               Conhecer ONGs parceiras
             </Link>
@@ -51,82 +131,34 @@ export default function Home() {
         </div>
       </section>
       <section className="container mx-auto px-6">
-        <div className="grid md:grid-cols-3 gap-6">
-          {[
-            {
-              title: "Adoção responsável",
-              desc: "Perfis completos, filtros por porte/idade e suporte pós-adoção.",
-              color: "from-[#0CB39C] to-[#00BFA6]",
-            },
-            {
-              title: "ONGs em destaque",
-              desc: "Visibilidade e transparência para projetos que salvam vidas.",
-              color: "from-[#FFD166] to-[#F6AE2D]",
-            },
-            {
-              title: "Compras com propósito",
-              desc: "Produtos com parte da renda revertida a abrigos parceiros.",
-              color: "from-[#EF476F] to-[#F78DA7]",
-            },
-          ].map((card, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 200, damping: 15 }}
-              className={`p-6 rounded-xl text-white bg-gradient-to-br ${card.color} shadow-md hover:shadow-xl cursor-default`}
-            >
-              <h3 className="text-lg font-semibold">{card.title}</h3>
-              <p className="mt-2 text-sm opacity-90">{card.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-      <section className="container mx-auto px-6">
         <div className="max-w-5xl mx-auto grid gap-8 md:grid-cols-2 items-center">
           <div>
             <h2 className="text-2xl font-bold text-[var(--text)]">Nossa missão</h2>
             <p className="mt-3 text-[var(--text)] opacity-80">
-              No PetUp acreditamos que todo animal merece um lar amoroso e suporte contínuo. Reunimos ONGs, adotantes,
+            No PetUp acreditamos que todo animal merece um lar amoroso e suporte contínuo. Reunimos ONGs, adotantes,
               lojas e doadores em uma plataforma confiável para acelerar adoções, facilitar resgates e gerar renda
               direcionada a quem cuida dos animais todos os dias.
             </p>
             <ul className="mt-6 space-y-3">
-              {[1, 2, 3].map((n, i) => {
-                const data = [
-                  {
-                    t: "Adoção responsável",
-                    d: "Perfis completos, filtros por porte/idade e suporte pós-adoção.",
-                  },
-                  {
-                    t: "ONGs em destaque",
-                    d: "Visibilidade e transparência para projetos que salvam vidas.",
-                  },
-                  {
-                    t: "Compras com propósito",
-                    d: "Produtos pensados no bem-estar, com parte da renda revertida a abrigos parceiros.",
-                  },
-                ][i];
-                return (
-                  <li key={n} className="flex items-start gap-3">
-                    <span className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-[var(--highlight)] text-white font-bold">
-                      {n}
+              {[1, 2, 3].map((n) => (
+                <li key={n} className="flex items-start gap-3">
+                  <span className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-[var(--highlight)] text-white font-bold">
+                    {n}
+                  </span>
+                  <div>
+                    <strong className="block text-[var(--text)]">
+                      {n === 1 ? "Adoção responsável" : n === 2 ? "ONGs em destaque" : "Compras com propósito"}
+                    </strong>
+                    <span className="text-sm text-[var(--text)] opacity-75">
+                      {n === 1 &&
+                        "Perfis completos, filtros por porte/idade e suporte pós-adoção."}
+                      {n === 2 && "Visibilidade e transparência para projetos que salvam vidas."}
+                      {n === 3 && "Renda revertida a abrigos parceiros em produtos selecionados."}
                     </span>
-                    <div>
-                      <strong className="block text-[var(--text)]">{data.t}</strong>
-                      <span className="text-sm text-[var(--text)] opacity-75">{data.d}</span>
-                    </div>
-                  </li>
-                );
-              })}
+                  </div>
+                </li>
+              ))}
             </ul>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Link to="/loja" className="inline-block px-5 py-2 bg-[var(--highlight)] text-white rounded-lg">
-                Visitar a loja
-              </Link>
-              <Link to="/doar" className="inline-block px-5 py-2 border border-[var(--border)] rounded-lg">
-                Fazer uma doação
-              </Link>
-            </div>
           </div>
           <div className="bg-[var(--secondary-bg)] p-6 rounded-xl shadow-md">
             <h3 className="text-lg font-semibold text-[var(--text)]">Como funciona</h3>
@@ -158,29 +190,55 @@ export default function Home() {
         <h2 className="text-2xl md:text-3xl font-extrabold text-[var(--text)] mb-4">
           “Salve o Ralph” — uma história que precisa ser ouvida
         </h2>
-        <p className="max-w-3xl mx-auto text-[var(--text)] opacity-80 mb-8">
-          O curta-metragem produzido pela Humane Society International mostra Ralph, um coelho usado como cobaia em
-          testes de cosméticos. Com uma abordagem sensível e comovente, o filme nos convida a refletir sobre a
-          responsabilidade humana e a importância de apoiar alternativas livres de crueldade.
-        </p>
         <div className="relative w-full max-w-4xl mx-auto aspect-video rounded-2xl overflow-hidden shadow-xl border border-[var(--border)]">
-          <iframe
-            src="https://www.youtube.com/embed/AjdMtLF0Z6w?si=kG-qaobVmEI2f-G3"
-            title="Salve o Ralph — Curta da Humane Society International"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-            className="absolute top-0 left-0 w-full h-full"
-          ></iframe>
+          <iframe 
+            src="https://www.youtube.com/embed/AjdMtLF0Z6w"
+            allowFullScreen 
+            className="absolute top-0 left-0 w-full h-full">
+          </iframe>
         </div>
-        <p className="mt-4 text-[var(--text)] opacity-80 max-w-2xl mx-auto">
-          A PetUp apoia causas que lutam contra o sofrimento animal e incentiva o consumo consciente. Compartilhe esta
-          mensagem e ajude a dar voz a quem não pode falar.
-        </p>
+      </section>
+      <section className="container mx-auto px-6 mt-12">
+        <div className="max-w-4xl mx-auto bg-[var(--secondary-bg)] p-6 rounded-xl shadow-md">
+          <h3 className="text-2xl font-extrabold text-[var(--text)] mb-4">Perguntas frequentes</h3>
+
+          <div className="space-y-3">
+            {faqs.map((f) => (
+              <details
+                key={f.id}
+                onToggle={(e) => setOpenId(e.currentTarget.open ? f.id : null)}
+                className="group bg-[var(--secondary-bg)]/30 p-0 rounded-lg"
+              >
+                <summary className="flex items-center justify-between cursor-pointer list-none p-4">
+                  <div>
+                    <div className="text-sm text-[var(--text)] opacity-80">{f.person}</div>
+                    <div className="mt-1 font-semibold text-[var(--text)]">{f.q}</div>
+                  </div>
+                  <span className="ml-4 text-[var(--highlight)] transition-transform duration-200" style={{ transform: openId === f.id ? "rotate(45deg)" : "rotate(0deg)" }}>
+                    +
+                  </span>
+                </summary>
+
+                <div className="overflow-hidden px-4">
+                  <motion.div
+                    initial={{ opacity: 0, scaleY: 0 }}
+                    animate={openId === f.id ? { opacity: 1, scaleY: 1 } : { opacity: 0, scaleY: 0 }}
+                    transition={{ duration: 0.22 }}
+                    style={{ transformOrigin: "top" }}
+                    className="mt-3 text-sm text-[var(--text)] opacity-85"
+                  >
+                    {f.a}
+                  </motion.div>
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
       </section>
       <section className="container mx-auto px-6">
         <h3 className="text-xl font-bold text-[var(--text)]">ONGs Parceiras</h3>
         <p className="mt-2 text-[var(--text)] opacity-75">
-          Conheça organizações sérias que resgatam, cuidam e reabilitam animais — apoie o trabalho delas.
+          Conheça organizações sérias que resgatam, cuidam e reabilitam animais. Apoie o trabalho delas! ❤️
         </p>
         <div className="mt-6">
           <OngsScroller />
@@ -190,7 +248,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center bg-[var(--secondary-bg)] p-8 rounded-xl shadow-lg">
           <h3 className="text-2xl font-bold text-[var(--text)]">Quer ajudar agora?</h3>
           <p className="mt-3 text-[var(--text)] opacity-80">
-            Doe uma quantia, compartilhe um perfil ou adquira produtos com parte da renda destinada a abrigos.
+            Doe, compartilhe perfis ou compre produtos que ajudam abrigos.
           </p>
           <div className="mt-6 flex justify-center gap-3">
             <Link to="/doar" className="px-6 py-3 rounded-lg bg-[var(--highlight)] text-white font-medium">
@@ -204,7 +262,7 @@ export default function Home() {
       </section>
       <footer className="container mx-auto px-6 pb-12 text-center">
         <p className="text-sm text-[var(--text)] opacity-70">
-          © {new Date().getFullYear()} PetUp — Juntos por um mundo mais humano para os animais.
+          © {new Date().getFullYear()} PetUp - Juntos por um mundo mais humano.
         </p>
       </footer>
     </main>
