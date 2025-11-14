@@ -22,9 +22,11 @@ export default function Pets() {
   }, [location]);
 
   useEffect(() => {
-    axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/animais`).then((r) => {
-      setPets(r.data);
-    });
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/api/animais?is_adotado=false`)
+      .then((r) => {
+        setPets(r.data);
+      });
   }, []);
 
   return (

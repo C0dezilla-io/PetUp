@@ -23,6 +23,7 @@ export default function Login() {
       .then((r) => {
         localStorage.setItem("token", r.data.token);
         localStorage.setItem("tipo_usuario", r.data.tipo_usuario);
+        localStorage.setItem("userId", r.data.userId);
         navigate("/");
       });
   };
