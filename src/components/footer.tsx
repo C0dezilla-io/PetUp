@@ -150,7 +150,7 @@ export const Footer = () => {
                             </div>
                             <div className="col-span-1">
                                 <h4 className="text-lg font-semibold mb-4 text-[var(--text)] hidden md:block">
-                                    Suporte
+                                    Segurança
                                 </h4>
 
                                 <button
@@ -191,11 +191,6 @@ export const Footer = () => {
                                 >
                                     <ul className="space-y-2 overflow-hidden">
                                         <li>
-                                            <button className="text-sm text-[var(--text)] opacity-70 hover:opacity-100 transition-all duration-200">
-                                                Como Funciona?
-                                            </button>
-                                        </li>
-                                        <li>
                                             <Link 
                                                 to="/privacidade" 
                                                 className="text-sm text-[var(--text)] opacity-70 hover:opacity-100 transition-all duration-200"
@@ -210,11 +205,6 @@ export const Footer = () => {
                                             >
                                                 Termos de Uso
                                             </Link>
-                                        </li>
-                                        <li>
-                                            <button className="text-sm text-[var(--text)] opacity-70 hover:opacity-100 transition-all duration-200">
-                                                FAQ
-                                            </button>
                                         </li>
                                     </ul>
                                 </div>
