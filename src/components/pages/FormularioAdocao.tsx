@@ -65,7 +65,10 @@ export default function FormularioAdocao() {
               },
             }
           )
-          .then((r) => console.log(r));
+          .then(() => {
+            window.alert("Pedido de adoção enviado!");
+            navigate("/pets/");
+          });
       } catch (e) {
         console.error(e);
       }
