@@ -11,6 +11,9 @@ import Cadastro from "./components/pages/Cadastro.tsx";
 import Termos from "./components/pages/Termos.tsx";
 import Privacidade from "./components/pages/Privacidade.tsx";
 import FormularioAdocao from "./components/pages/FormularioAdocao.tsx";
+import MeusPets from "./components/pages/MeusPets.tsx";
+import PedidosAdocao from "./components/pages/PedidosAdocao.tsx";
+import { EditarPet } from "./components/pages/EditarPet.tsx";
 
 function App() {
   return (
@@ -21,6 +24,9 @@ function App() {
           <Route path="/login/" element={<Login />} />
           <Route path="/pets/" element={<Pets />} />
           <Route path="/pets/:id" element={<Pets />} />
+          <Route path="/meuspets/" element={<MeusPets />} />
+          <Route path="/pedidosadocao/:id" element={<PedidosAdocao />} />
+          <Route path="/editarpet/:id" element={<EditarPet />} />
           <Route path="/ongs/" element={<Ongs />} />
           <Route path="/doar/" element={<DoarPets />} />
           <Route path="/perfil/" element={<Perfil />} />

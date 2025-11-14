@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function FormularioAdocao() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [telefone, setTelefone] = useState("");
   const [listaEstados, setListaEstados] = useState<any[]>([]);
@@ -18,6 +19,7 @@ export default function FormularioAdocao() {
   const [motivacao, setMotivacao] = useState("");
 
   useEffect(() => {
+    if (!localStorage.getItem("token")) navigate("/login/");
     axios
       .get("https://servicodados.ibge.gov.br/api/v1/localidades/estados")
       .then((r) => {
@@ -37,13 +39,37 @@ export default function FormularioAdocao() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(id);
-    console.log(telefone);
-    console.log(cidadeSelecionada);
-    console.log(estadoSelecionado);
-    console.log(lar);
-    console.log(outrosAnimais);
-    console.log(motivacao);
+    if (
+      id &&
+      telefone &&
+      cidadeSelecionada &&
+      estadoSelecionado &&
+      lar &&
+      outrosAnimais &&
+      motivacao
+    ) {
+      try {
+        axios
+          .post(
+            `${import.meta.env.VITE_BACKEND_URL}/api/adocoes`,
+            {
+              animalId: id,
+              telefone: telefone,
+              descricao_lar: lar,
+              possui_outro_animal: outrosAnimais ? true : false,
+              porque_deseja_adotar: motivacao,
+            },
+            {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+              },
+            }
+          )
+          .then((r) => console.log(r));
+      } catch (e) {
+        console.error(e);
+      }
+    }
   };
 
   return (

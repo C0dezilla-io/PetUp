@@ -20,6 +20,16 @@ export default function PetModal({ pet }: PetModalProps) {
     setCurrentPet(pet);
   }, [pet]);
 
+  const handleButtonClick = (pet: petType) => {
+    if (
+      pet.responsavel.responsavelId.toString() == localStorage.getItem("userId")
+    ) {
+      navigate(`/editarpet/${pet.animalId}`);
+    } else {
+      navigate(`/formulario-de-adocao/${pet.animalId}`);
+    }
+  };
+
   if (currentPet == null) return <></>;
 
   return (
@@ -40,7 +50,7 @@ export default function PetModal({ pet }: PetModalProps) {
                   currentPet.caminhoFoto
                 : "/src/assets/petNotFound.png"
             }
-            alt=""
+            alt={`foto de ${currentPet.nome}`}
             className="object-cover w-full"
           />
         </div>
@@ -118,12 +128,13 @@ export default function PetModal({ pet }: PetModalProps) {
             <p>{currentPet.sobre}</p>
           </div>
           <button
-            onClick={() =>
-              navigate(`/formulario-de-adocao/${currentPet.animalId}`)
-            }
+            onClick={() => handleButtonClick(currentPet)}
             className="col-span-2 rounded-lg py-2 border border-[var(--highlight)] text-[var(--highlight)] hover:bg-[var(--highlight)] hover:text-[var(--bg)] transition-colors duration-300 cursor-pointer"
           >
-            Quero Adotar
+            {currentPet.responsavel.responsavelId.toString() ==
+            localStorage.getItem("userId")
+              ? "Editar Pet"
+              : "Quero Adotar"}
           </button>
         </div>
       </div>
